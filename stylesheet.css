@@ -1,0 +1,31 @@
+#input-submit {
+  
+    /* margin: 0 auto; */
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+  display: flex;
+  position: fixed;
+  bottom: 150px;
+  justify-content: center;
+  margin-left: 400px;
+    
+}
+
+h1 {
+    text-align: center;
+    padding-top: 30px;
+}
+.input-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+input {
+    margin-right: 10px;
+}
+
+label {
+    margin-right: 10px;
+}
