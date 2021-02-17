@@ -6,8 +6,56 @@
 
 <body>
   <h1> Experiment </h1>
+  <div id="vis"></div>
 </body>
 
 <script>
   console.log(d3); // test if d3 is loaded
+
+  // Dummy data (to be randomly generated on backend)
+  dummyData = [ [1, 10], [2, 20], [3, 25], [4, 16], [5, 37], [6, 43] ]
+
+  // Set up grid dimensions
+  var margin = {top: 20, right: 20, bottom: 20, left: 20}
+  var width = 540 - margin.right - margin.left
+  var height = 540 - margin.top - margin.bottom
+
+  // Create SVG
+  var svg = d3.select("#vis")
+  .append('svg')
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+
+  // Create grid
+  svg.append("rect")
+  .attr("width", width)
+  .attr("height", height)
+  .attr("fill", "#ececec")
+
+  // Set x + y linear scales
+  var x = d3.scaleLinear().domain([0, 7]).range([0, width])  
+  var y = d3.scaleLinear().domain([0, 50]).range([height, 0])
+
+  // x axis
+  svg.append("g")
+  .attr("transform", "translate(0, "+ height + ")")
+  .call(d3.axisBottom(x))
+
+  // y axis
+  svg.append("g")
+  .call(d3.axisLeft(y))
+
+  svg.selectAll("bar")
+  .data(dummyData)
+  .enter()
+  .append("rect")
+  .style("fill", "steelblue")
+  .attr("x", function(d) { return x(d[0]); })
+  .attr("width", 2)
+  .attr("y", function(d) { return y(d[1]); })
+  .attr("height", function(d) { return height - y(d[1]); });
+
+
 </script>
