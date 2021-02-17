@@ -97,3 +97,7 @@ GitHub Details
 ```
 a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
 ```
+
+
+Resources
+http://bl.ocks.org/mosley812/43194ec6f540c05e48273d0cd8877d2c
