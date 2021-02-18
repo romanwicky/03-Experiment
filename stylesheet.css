@@ -1,15 +1,21 @@
 #input-submit {
-  
-    /* margin: 0 auto; */
-  width: 50%;
-  border: 3px solid green;
-  padding: 10px;
-  display: flex;
-  position: fixed;
-  bottom: 150px;
-  justify-content: center;
-  margin-left: 400px;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+    display: flex;
+    position: fixed;
+    bottom: 150px;
+    justify-content: center;
+    /* Added this to center @danya */
+    margin: 5% auto; 
+    left: 0;
+    right: 0;
     
+}
+object { 
+    justify-content: center;
+    left: 100px;
+    display: flex;
 }
 
 h1 {
