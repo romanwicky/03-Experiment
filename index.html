@@ -24,19 +24,46 @@
     console.log(d3); // test if d3 is loaded
 
     // Hard code as place holder - will need to change file based on backend counter (I think)
-    var next = "tilt-angle.html" //"./barchart.html" 
+    var next = null //"./barchart.html" 
+    var counter = 0;
+
 
     // Get button from dom and attach listener
-    document.getElementById("submit-button").addEventListener("click", switchChart)
+    document.getElementById("submit-button").addEventListener("click", switchChart);
+
 
     function switchChart() {
 
+      switch (counter) {
+      case 0:
+          next = "tilt-angle.html";
+          break;
+
+      case 1:
+          next = "volume.html";
+          break;
+      
+      case 2:
+        next = "barchart.html";
+        break;
+
+      default:
+        // next = "index.html";
+        break;
+    }
+
       // Using iframe as a placeholder - replace with fetch when backend is up and running
       //  fetch(next).then(content => console.log(content))
-      document.getElementById("visDiv").innerHTML = "'<object type='text/html' data = ' " + next + "'></object>"
+
+
+      document.getElementById("visDiv").innerHTML = "'<object type='text/html' id= 'object-design' data = ' " + next + "'></object>";
+      counter += 1;
+
+      console.log(counter);
+
     }
   </script>
 </html>
 
-<!-- '<object type="text/html" data="home.html" ></object>'; -->
+
 

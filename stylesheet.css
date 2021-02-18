@@ -4,7 +4,7 @@
     padding: 10px;
     display: flex;
     position: fixed;
-    bottom: 150px;
+    bottom: 70px;
     justify-content: center;
     /* Added this to center @danya */
     margin: 5% auto; 
@@ -12,11 +12,16 @@
     right: 0;
     
 }
-object { 
-    justify-content: center;
-    left: 100px;
+#object-design { 
+    width: 50%;
+    margin: 5% auto; 
     display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 100px;   
 }
+
 
 h1 {
     text-align: center;
