@@ -129,15 +129,17 @@
 
   function angleChart() {
     // Dummy data (to be randomly generated on backend)
-    dummyData = [] // degrees  
+    dummyData = [ 
+      {label: 'a', angle: randomAngles()}, 
+      {label: 'b', angle: randomAngles()}, 
+      {label: 'c', angle: randomAngles()}, 
+      {label: 'd', angle: randomAngles()}, 
+      {label: 'e', angle: randomAngles()} ] 
+
+    // Static data to generate and position lines
     dummyLine = [ [250, 250], [250, 200]  ]
     staticPositions = [ [100, 100], [0, 0], [100, -100], [-150, -100], [-150, 100] ]
 
-    // Randomly generate angles
-    for (var i = 0 ; i < 5 ; i ++) {
-      dummyData.push(Math.floor(Math.random() * (360 - 0 + 1) ))
-    }
-    
     // Create grid
     svg.append("rect")
     .attr("width", width)
@@ -162,9 +164,14 @@
 
     counter = 0
     
-    dummyData.forEach(angle => {
-      console.log(angle)
-      svg.append("path")
+    dummyData.forEach(data => {
+
+      // Create G elt to contain line + text
+      var g = svg.append("g")
+      .attr("id", data.label)
+
+      // Create line
+      g.append("path")
       .datum(dummyLine)
       .attr("stroke", "black")
       .attr("stroke-width", 2)
@@ -173,12 +180,26 @@
         .y(function(d) { return d[1] })
       )
       .attr("transform", function(d) {
-        return "translate(" + staticPositions[counter][0] + " " + staticPositions[counter][1] + ") rotate(" + angle + " 250 250)" // translate(" + staticPositions[counter][0] + " " + staticPositions[counter][1] + ")" 
+        return "translate(" + staticPositions[counter][0] + " " + staticPositions[counter][1] + ") rotate(" + data.angle + " 250 250)" 
       })
+
+      // Create label
+      g.append("text")
+      .data(data.label)
+      .text(function (d) { return d })
+      .attr("x", 260) 
+      .attr("y", 260) 
+      .attr("transform", function(d) {
+        return "translate(" + staticPositions[counter][0] + " " + staticPositions[counter][1] + ")" 
+      })
+
       counter++
     })
+  }
 
-    
+  // Generate random angles 0 - 360 degrees
+  function randomAngles() {
+    return Math.floor(Math.random() * (360 - 0 + 1))
   }
 
   // verticalBarChart()
