@@ -129,9 +129,15 @@
 
   function angleChart() {
     // Dummy data (to be randomly generated on backend)
-    dummyData = [ 220, 30, 77, 12, 99] // degrees  
+    dummyData = [] // degrees  
     dummyLine = [ [250, 250], [250, 200]  ]
+    staticPositions = [ [100, 100], [0, 0], [100, -100], [-150, -100], [-150, 100] ]
 
+    // Randomly generate angles
+    for (var i = 0 ; i < 5 ; i ++) {
+      dummyData.push(Math.floor(Math.random() * (360 - 0 + 1) ))
+    }
+    
     // Create grid
     svg.append("rect")
     .attr("width", width)
@@ -154,11 +160,10 @@
     .call(d3.axisLeft(y).tickFormat("").tickSize(0))
     .style("stroke-width", "1.5px")
 
-    randomPos = randomTranslation()
-    console.log(randomPos)
     counter = 0
-
+    
     dummyData.forEach(angle => {
+      console.log(angle)
       svg.append("path")
       .datum(dummyLine)
       .attr("stroke", "black")
@@ -168,22 +173,12 @@
         .y(function(d) { return d[1] })
       )
       .attr("transform", function(d) {
-        return "rotate(" + angle + " 250 250) translate(" + randomPos[counter] + " " + randomPos[counter+1] + ")" 
+        return "translate(" + staticPositions[counter][0] + " " + staticPositions[counter][1] + ") rotate(" + angle + " 250 250)" // translate(" + staticPositions[counter][0] + " " + staticPositions[counter][1] + ")" 
       })
-      counter += 2
+      counter++
     })
 
     
-  }
-
-  function randomTranslation (pos) {
-    randomArray = []
-
-    while (randomArray.length < 10) {
-      var randomInt = (Math.floor(Math.random() * (40 - 5) ) + 5)*5
-      if (randomArray.find(elt => elt === randomInt) === undefined) randomArray.push(randomInt)
-    }
-    return randomArray
   }
 
   // verticalBarChart()
