@@ -12,7 +12,7 @@
   
     <div id="input-submit">
       <form class="input-form">
-        <label for="answer"> Answer: </label>
+        <label for="input-text"> Answer: </label>
         <input type="text" id="input-text">
         <!-- <input type="submit" id="submit-button">  -->  <!-- Dont think we want submit bc thats form stuff im not sure we can control-->
         <input type="button" id="submit-button" value="Next"/>
@@ -30,10 +30,13 @@
     document.getElementById("submit-button").addEventListener("click", switchChart)
 
     function switchChart() {
+
       // Using iframe as a placeholder - replace with fetch when backend is up and running
       //  fetch(next).then(content => console.log(content))
-      document.getElementById("visDiv").innerHTML = "<iframe src='" + next + "'></iframe>"
+      document.getElementById("visDiv").innerHTML = "'<object type= >' " + next + "'></iframe>"
     }
   </script>
 </html>
+
+<!-- '<object type="text/html" data="home.html" ></object>'; -->
 
