@@ -1,11 +1,11 @@
 <html>
   <head>
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <link rel="stylesheet" href="stylesheet.css">    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">   
   </head>
  
   <body>
-    <h1> Experiment </h1>
+    <h1 id="header"> Experiment </h1>
 
     <!-- Div to hold visualizations -->
     <div id="visDiv"></div>
@@ -14,7 +14,6 @@
       <form class="input-form">
         <label for="input-text"> Answer: </label>
         <input type="text" id="input-text">
-        <!-- <input type="submit" id="submit-button">  -->  <!-- Dont think we want submit bc thats form stuff im not sure we can control-->
         <input type="button" id="submit-button" value="Next"/>
       </form>
     </div>
@@ -27,10 +26,8 @@
     var next = null //"./barchart.html" 
     var counter = 0;
 
-
     // Get button from dom and attach listener
     document.getElementById("submit-button").addEventListener("click", switchChart);
-
 
     function switchChart() {
 
@@ -48,13 +45,12 @@
         break;
 
       default:
-        // next = "index.html";
+        //next = "index.html";
         break;
     }
 
       // Using iframe as a placeholder - replace with fetch when backend is up and running
       //  fetch(next).then(content => console.log(content))
-
 
       document.getElementById("visDiv").innerHTML = "'<object type='text/html' id= 'object-design' data = ' " + next + "'></object>";
       counter += 1;
