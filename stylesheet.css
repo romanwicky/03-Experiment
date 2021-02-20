@@ -1,10 +1,10 @@
 #input-submit {
     width: 50%;
-    border: 3px solid green;
+    border: 3px #204DF5;
     padding: 10px;
     display: flex;
     position: fixed;
-    bottom: 70px;
+    bottom: 40px;
     justify-content: center;
     /* Added this to center @danya */
     margin: 5% auto; 
@@ -13,6 +13,20 @@
     
 }
 
+#expDiv {
+   justify-content: center; 
+   width: 120px;
+   margin: 5% auto; 
+   display: flex;
+}
+
+#submit-button {
+    font-family: "Roboto", sans-serif;
+    border: none;
+    height: 30px;
+    width: 50px;
+    background-color: cornflowerblue;
+}
 
 #object-design { 
     width: 50%;
@@ -28,8 +42,8 @@
 #header {
     text-align: center;
     padding-top: 30px;
-
-    font-size: 20px; 
+    font-family: "Roboto", sans-serif;
+    font-size: 50px; 
     color: #445668; 
     text-transform: uppercase;
     text-align: center; 
@@ -49,5 +63,7 @@ input {
 
 label {
     margin-right: 10px;
-    color: blue;
+    padding-top: 5px;
+    font-family: "Roboto", sans-serif;
+    
 }
