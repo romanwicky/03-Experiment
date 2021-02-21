@@ -14,7 +14,7 @@
         </div>
     </body>
 
-    <script>
+    <script>        
         var next = null 
         var counter = 0;
 
@@ -27,10 +27,10 @@
                     next = "barchart.html";
                     break;
                 case 1:
-                    next = "volume.html";
+                    next = "tilt-angle.html";
                     break;
                 case 2:
-                    next = "tilt-angle.html";
+                    next = "volume.html";
                     break;
                 default:
                     break;
@@ -39,6 +39,8 @@
             counter += 1;
             console.log(counter)
         }
+
+        document.getElementById("submit-button").addEventListener("click", switchChart);
         
     </script>
 </html>
