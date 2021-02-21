@@ -15,9 +15,22 @@
 
 #expDiv {
    justify-content: center; 
-   width: 120px;
+   width: 50%;
+   text-align: center;
    margin: 5% auto; 
    display: flex;
+   padding: 10px;
+   line-height: 30px;
+   font-family: "Roboto", sans-serif;
+
+}
+
+#tilt-text {
+    font-family: "Roboto", sans-serif;
+}
+
+#bartext {
+    font-family: "Roboto", sans-serif;
 }
 
 #submit-button {
