@@ -1,8 +1,81 @@
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<html>
+  <head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+   
+  </head>
+ 
+  <body>
+    <h1 id="header"> Experiment </h1>
 
+    <!-- Div to hold visualizations -->
+    <div id="visDiv"></div>
 
-<style>
-</style>
+    <!-- having a bug with this div and css, not updating? unsure if its only on my end - danya  -->
+    <!-- Works fine for me - styled it for you & will push back up - molly  -->
+
+    <div id="expDiv">
+      <p>
+        In this experiment, you are asked to view various types of visualizations such as bar charts, volume, and angles. 
+        These questions are a way to see how the human brain views different types of visuals. We won't record any other 
+        information from you except your answers. 
+      </p>
+      <p>Thank you!</p>
+    </div>
+  
+    <div id="input-submit">
+      <form class="input-form">
+        <label for="input-text"> Answer: </label>
+        <input type="text" id="input-text">
+        <input type="button" id="submit-button" value="Next"/>
+      </form>
+    </div>
+  </body>
+  
+  <script>
+    console.log(d3); // test if d3 is loaded
+
+    // Hard code as place holder - will need to change file based on backend counter (I think)
+    var next = null //"./barchart.html" 
+    var counter = 0;
+
+    // Get button from dom and attach listener
+    document.getElementById("submit-button").addEventListener("click", switchChart);
+
+    function switchChart() {
+
+      switch (counter) {
+      case 0:
+          next = "tilt-angle.html";
+          break;
+
+      case 1:
+          next = "volume.html";
+          break;
+      
+      case 2:
+        next = "barchart.html";
+        break;
+
+      default:
+        //next = "index.html";
+        break;
+    }
+
+      // Using iframe as a placeholder - replace with fetch when backend is up and running
+      //  fetch(next).then(content => console.log(content))
+
+      document.getElementById("visDiv").innerHTML = "'<object type='text/html' id= 'object-design' data = ' " + next + "'></object>";
+      counter += 1;
+
+      console.log(counter);
+
+    }
+  </script>
+</html>
+
 
 <!-- <body>
   <h1> Experiment </h1>
@@ -217,7 +290,7 @@
   // angleChart() -->
 
 
-
+<!-- 
   <!DOCTYPE html>
   <meta charset="utf-8">
   <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -377,4 +450,5 @@
 
 
 
-</script>
+</script> -->
+
