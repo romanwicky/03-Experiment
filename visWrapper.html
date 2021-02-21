@@ -18,31 +18,57 @@
     </body>
 
     <script>        
-        var next = null 
+        var next = null;
         var counter = 0;
+        var testCounter = -1;
+        var isFinished = false;
 
-        switchChart()
-        
-        function switchChart() {
-            switch (counter) {
-                case 0:
-                    next = "barchart.html";
-                    break;
-                case 1:
-                    next = "tilt-angle.html";
-                    break;
-                case 2:
-                    next = "volume.html";
-                    break;
-                default:
-                    break;
-            }
-            document.getElementById("visDiv").innerHTML = "<object type='text/html' id='object-design' data ='" + next + "'></object>";
-            counter += 1;
+        if(testCounter == -1){
+            switchChart();
+                
         }
 
+
+        function switchChart() {
+                console.log(testCounter);
+                switch (counter) {
+                    case 0:
+                        testCounter+=1;
+                        next = "barchart.html";
+                        if(testCounter == 20){
+                            isFinished = true;
+                            testCounter = 0;
+                            counter += 1;
+                        }  
+                        break;
+                    case 1:
+                        testCounter+=1;
+                        next = "tilt-angle.html";
+                        if(testCounter == 20){
+                            isFinished = true;
+                            testCounter = 0;
+                            counter += 1;
+                        }  
+
+                        break;
+                    case 2:
+                        testCounter+=1;
+                        next = "volume.html";
+                        if(testCounter == 20){
+                            isFinished = true;
+                            testCounter = 0;
+                            counter += 1;
+                        }
+                        break;
+                    default:
+                        next = "finished.html";
+                        break;
+                    }
+                document.getElementById("visDiv").innerHTML = "<object type='text/html' id='object-design' data ='" + next + "'></object>";
+                isFinished = false;
+                }
         document.getElementById("submit-button").addEventListener("click", switchChart);
-        
+    
     </script>
 </html>
 
