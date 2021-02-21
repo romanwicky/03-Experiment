@@ -6,7 +6,6 @@
     position: fixed;
     bottom: 40px;
     justify-content: center;
-    /* Added this to center @danya */
     margin: 5% auto; 
     left: 0;
     right: 0;
@@ -14,10 +13,10 @@
 }
 
 #expDiv {
-   justify-content: center; 
-   width: 120px;
-   margin: 5% auto; 
-   display: flex;
+   width: 60%;
+   margin: 10% auto; 
+   text-align: center;
+   line-height: 150%;
 }
 
 #submit-button {
