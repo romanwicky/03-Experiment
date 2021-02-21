@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    </head>
+
+    <body>
+        <div id="visDiv"></div>
+        <div id="input-submit">
+            <form class="input-form">
+                <label for="input-text"> Answer: </label>
+                <input type="text" id="input-text">
+                <input type="button" id="submit-button" value="Next"/>
+            </form>
+        </div>
+    </body>
+
+    <script>
+        var next = null 
+        var counter = 0;
+
+        switchChart()
+        
+        function switchChart() {
+            console.log("switchingn - counnter = " + counter)
+            switch (counter) {
+                case 0:
+                    next = "barchart.html";
+                    break;
+                case 1:
+                    next = "volume.html";
+                    break;
+                case 2:
+                    next = "tilt-angle.html";
+                    break;
+                default:
+                    break;
+            }
+            document.getElementById("visDiv").innerHTML = "<object type='text/html' id='object-design' data ='" + next + "'></object>";
+            counter += 1;
+            console.log(counter)
+        }
+        
+    </script>
+</html>
+
+

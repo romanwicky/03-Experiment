@@ -10,9 +10,7 @@
   <body>
     <h1 id="header"> Experiment </h1>
 
-    <!-- Div to hold visualizations -->
-    <div id="visDiv"></div>
-
+    <!-- Entry page -->
     <div id="expDiv">
       <p>
         In this experiment, you are asked to view various types of visualizations such as bar charts, volume, and angles. 
@@ -20,52 +18,22 @@
         information from you except your answers. 
       </p>
       <p>Thank you!</p>
+      <input type="button" id="start-button" value="Start"/>
     </div>
-  
-    <div id="input-submit">
-      <form class="input-form">
-        <label for="input-text"> Answer: </label>
-        <input type="text" id="input-text">
-        <input type="button" id="submit-button" value="Next"/>
-      </form>
+
+    <!-- Visualization wrapper -->
+    <div id="visWrapper">
+      <object type='text/html' data ='visWrapper'></object>
     </div>
+
   </body>
   
   <script>
-    console.log(d3); // test if d3 is loaded
+    document.getElementById("start-button").addEventListener("click", beginExp);
 
-    // Hard code as place holder - will need to change file based on backend counter (I think)
-    var next = null //"./barchart.html" 
-    var counter = 0;
-
-    // Get button from dom and attach listener
-    document.getElementById("submit-button").addEventListener("click", switchChart);
-
-    function switchChart() {
-
-      switch (counter) {
-      case 0:
-          next = "barchart.html";
-          break;
-
-      case 1:
-          next = "volume.html";
-          break;
-      
-      case 2:
-        next = "tilt-angle.html";
-        break;
-
-      default:
-        //next = "index.html";
-        break;
-    }
-
-      document.getElementById("visDiv").innerHTML = "<object type='text/html' id='object-design' data ='" + next + "'></object>";
-      counter += 1;
-
-      console.log(counter);
-
+    function beginExp() {
+      document.getElementById("expDiv").className = "hidden"
+      document.getElementById("visWrapper").innerHTML = "<object type='text/html' id='object-design' data ='visWrapper.html'></object>";
     }
   </script>
 </html>
