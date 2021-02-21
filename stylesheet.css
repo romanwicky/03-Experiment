@@ -19,6 +19,11 @@ body {
     width: 60%;
     margin: 10% auto; 
     line-height: 150%;
+    font-family: "Roboto", sans-serif;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
 }
 
 .hidden {
