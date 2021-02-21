@@ -26,9 +26,8 @@
 
 #bartext {
     font-family: "Roboto", sans-serif;
-
-  
-
+    text-align: center;
+    margin: 50px 0 20px 0;
 }
 
 #submit-button {
@@ -40,13 +39,13 @@
 }
 
 #object-design { 
-    width: 50%;
-    margin: 5% auto; 
-    display: flex;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 100px;   
+    /* height: 550px;*/
+    width: 550px; 
+    height: 80%;
+    /* width: 60%; */
+    display: block;
+    margin-left: auto; 
+    margin-right: auto; 
 }
 
 

@@ -6,9 +6,77 @@
   </head>
  
   <body>
-      <div id="bartext">
-        <p>This test is to see how the human brain perceives data with horizontal vs. stacked bar charts. </p>
-      </div>
-    
+    <div id="vis"></div>
+    <div id="bartext">
+      <p>This test is to see how the human brain perceives data with horizontal vs. stacked bar charts. </p>
+    </div>
   </body>
+
+  <script>
+    // Set up grid dimensions
+    var margin = {top: 20, right: 20, bottom: 20, left: 20}
+    var width = 540 - margin.right - margin.left
+    var height = 540 - margin.top - margin.bottom
+
+    // Create SVG
+    var svg = d3.select("#vis")
+    .append('svg')
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+
+    function verticalBarChart () {
+    // Dummy data (to be randomly generated on backend)
+    dummyData = [ ['a', 10], ['b', 20], ['c', 25], ['d', 16], ['e', 37], ['f', 43] ] // assume: y axis ranges 1- 50
+    dummySelectedData = ['a', 'd'] 
+
+    // Create grid
+    svg.append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("fill", "none")
+    
+    // x axis
+    var x = d3.scaleBand()
+    .domain(dummyData.map(function(d) {return d[0]}))
+    .range([0, width])
+    .padding(0.2)
+    svg.append("g")
+    .attr("transform", "translate(0, "+ height + ")")
+    .call(d3.axisBottom(x).tickFormat("").tickSize(0))
+    .style("stroke-width", "1.5px")
+
+    // y axis
+    var y = d3.scaleLinear().domain([0, 50]).range([height, 0])
+    svg.append("g")
+    .call(d3.axisLeft(y).tickFormat("").tickSize(0))
+    .style("stroke-width", "1.5px")
+
+    // Create bars
+    svg.selectAll("bar")
+    .data(dummyData)
+    .enter()
+    .append("g")
+    .attr("id", function(d) { return d[0] })
+    .append('rect')
+    .style("fill", "none")
+    .style("stroke", "black")
+    .attr("x", function(d) { return x(d[0]) })
+    .attr("y", function(d) { return y(d[1]) })
+    .attr("width", x.bandwidth())
+    .attr("height", function(d) { return height - y(d[1]) })
+
+    // Add dots to selected bars 
+    dummySelectedData.forEach(id => {
+      var selectedBar = d3.select('#' + id)
+      selectedBar.append("circle")
+      .attr("cx", function(d) { return x(d[0]) + x.bandwidth()/2 })
+      .attr("cy", width + margin.bottom/2)
+      .attr("r", 5)
+    })
+  }
+
+  verticalBarChart()
+  </script>
 </html>
