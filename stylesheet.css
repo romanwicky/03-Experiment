@@ -1,3 +1,7 @@
+body {
+    text-align: center;
+}
+
 #input-submit {
     width: 50%;
     border: 3px #204DF5;
@@ -9,13 +13,11 @@
     margin: 5% auto; 
     left: 0;
     right: 0;
-    
 }
 
 #expDiv {
     width: 60%;
     margin: 10% auto; 
-    text-align: center;
     line-height: 150%;
 }
 
@@ -31,7 +33,6 @@
 
 #bartext {
     font-family: "Roboto", sans-serif;
-    text-align: center;
     margin: 50px 0 20px 0;
 }
 
@@ -53,13 +54,11 @@ input[type=button] {
 }
 
 #header {
-    text-align: center;
     padding-top: 30px;
     font-family: "Roboto", sans-serif;
     font-size: 50px; 
     color: #445668; 
     text-transform: uppercase;
-    text-align: center; 
     margin: 0 0 35px 0; 
     text-shadow: 0px 1px 0px #f2f2f2;
 }

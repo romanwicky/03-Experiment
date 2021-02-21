@@ -7,12 +7,8 @@
  
   <body>
     <svg id="vis"></svg>
-    <p>
-      This test is to see how the human brain distinguishes and understands the difference in volume between a small cube and a large cube.
-    </p>
-    <p>
-      How many times can the small cube fit in the large cube?
-    </p>
+    <p>This test is to see how the human brain distinguishes and understands the difference in volume between a small cube and a large cube.</p>
+    <p>How many times can the small cube fit in the large cube?</p>
   </body>
 
   <script>
@@ -27,7 +23,6 @@
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-    .call(d3.drag().on('drag', dragged).on('start', dragStart).on('end', dragEnd)).append('g')
 
     // Create grid
     svg.append("rect")
@@ -51,99 +46,101 @@
     .call(d3.axisLeft(y).tickFormat("").tickSize(0))
     .style("stroke-width", "1.5px")
 
-
-
-
-     var svg = d3.select('svg').call(d3.drag().on('drag', dragged).on('start', dragStart).on('end', dragEnd)).append('g')
-      var origin = [200, 200], scale = 20, cubesData = [], alpha = 0, beta = 0, startAngle = Math.PI/6
-      var cubesGroup = svg.append('g').attr('class', 'cubes')
-      var mx, my, mouseX, mouseY
+    var svg = d3.select('svg').call(d3.drag().on('drag', dragged).on('start', dragStart).on('end', dragEnd)).append('g')
+    var origin = [200, 200], scale = 20, cubesData = [], alpha = 0, beta = 0, startAngle = Math.PI/6
+    var cubesGroup = svg.append('g').attr('class', 'cubes')
+    var mx, my, mouseX, mouseY
   
-      var cubes3D = d3._3d()
-        .shape('CUBE')
-        .x(function(d){ return d.x })
-        .y(function(d){ return d.y })
-        .z(function(d){ return d.z })
-        .rotateY( startAngle)
-        .rotateX(-startAngle)
-        .origin(origin)
-        .scale(scale)
+    // Create cube using d3 3D
+    var cubes3D = d3._3d()
+      .shape('CUBE')
+      .x(function(d){ return d.x })
+      .y(function(d){ return d.y })
+      .z(function(d){ return d.z })
+      .rotateY( startAngle)
+      .rotateX(-startAngle)
+      .origin(origin)
+      .scale(scale)
+
+    init()
   
-      function processData(data) {
-  
-        // Cubes
-        var cubes = cubesGroup.selectAll('g.cube').data(data, function(d){ return d.id })
-        var ce = cubes
-          .enter()
-          .append('g')
-          .attr('class', 'cube')
-          .attr('fill', "none") 
-          .attr('stroke',"black") 
-          .merge(cubes)
+    // Initialize cubes
+    function init() {
+      cubesData = []
+
+      // Large cube
+      var z = 0 // y pos
+      var x = 10 // x pos
+      var h = 2 // height
+      var _cube = makeCube(h, x, z)
+      _cube.id = 'cube_1'
+      _cube.height = h
+      cubesData.push(_cube)
+
+      // Small cube
+      var z = 0 // y pos
+      var x = 0 // x pos
+      var h = 5 // height
+      var _cube = makeCube(h, x, z)
+      _cube.id = 'cube_2'
+      _cube.height = h
+      cubesData.push(_cube)
+
+      processData(cubes3D(cubesData))
+    }
+
+    // Attach cubes & faces to svg
+    function processData(data) {
+
+      var cubes = cubesGroup.selectAll('g.cube').data(data, function(d){ return d.id })
+      var ce = cubes
+        .enter()
+        .append('g')
+        .attr('class', 'cube')
+        .attr('fill', "none") 
+        .attr('stroke',"black") 
+        .merge(cubes)
     
-        // Faces
-        var faces = cubes.merge(ce).selectAll('path.face').data(function(d){ return d.faces; }, function(d){ return d.face })
-        faces.enter()
-          .append('path')
-          .attr('class', 'face')
-          .merge(faces)
-          .attr('d', cubes3D.draw)
-      }
+      var faces = cubes.merge(ce).selectAll('path.face').data(function(d){ return d.faces; }, function(d){ return d.face })
+      faces.enter()
+        .append('path')
+        .attr('class', 'face')
+        .merge(faces)
+        .attr('d', cubes3D.draw)
+    }
   
-      function init() {
-        cubesData = []
-
-        var z = 0 // y pos
-        var x = 10 // x pos
-        var h = 2 // height
-        var _cube = makeCube(h, x, z)
-        _cube.id = 'cube_1'
-        _cube.height = h
-        cubesData.push(_cube)
-
-        var z = 0 // y pos
-        var x = 0 // x pos
-        var h = 5 // height
-        var _cube = makeCube(h, x, z)
-        _cube.id = 'cube_2'
-        _cube.height = h
-        cubesData.push(_cube)
-
-        processData(cubes3D(cubesData))
-      }
+    function dragStart() {
+      mx = d3.event.x
+      my = d3.event.y
+    }
   
-      function dragStart() {
-        mx = d3.event.x
-        my = d3.event.y
-      }
+    function dragged() {
+      mouseX = mouseX || 0
+      mouseY = mouseY || 0
+      beta   = (d3.event.x - mx + mouseX) * Math.PI / 230 
+      alpha  = (d3.event.y - my + mouseY) * Math.PI / 230  * (-1)
+      processData(cubes3D.rotateY(beta + startAngle).rotateX(alpha - startAngle)(cubesData), 0)
+    }
   
-      function dragged() {
-        mouseX = mouseX || 0
-        mouseY = mouseY || 0
-        beta   = (d3.event.x - mx + mouseX) * Math.PI / 230 
-        alpha  = (d3.event.y - my + mouseY) * Math.PI / 230  * (-1)
-        processData(cubes3D.rotateY(beta + startAngle).rotateX(alpha - startAngle)(cubesData), 0)
-      }
+    function dragEnd() {
+      mouseX = d3.event.x - mx + mouseX
+      mouseY = d3.event.y - my + mouseY
+    }
   
-      function dragEnd() {
-        mouseX = d3.event.x - mx + mouseX
-        mouseY = d3.event.y - my + mouseY
-      }
+    // Construct cube
+    function makeCube(h, x, z) {
+      return [
+        {x: x - h/2, y: h, z: z + h/2}, // FRONT TOP LEFT
+        {x: x - h/2, y: 0, z: z + h/2}, // FRONT BOTTOM LEFT
+        {x: x + h/2, y: 0, z: z + h/2}, // FRONT BOTTOM RIGHT
+        {x: x + h/2, y: h, z: z + h/2}, // FRONT TOP RIGHT
+        {x: x - h/2, y: h, z: z - h/2}, // BACK  TOP LEFT
+        {x: x - h/2, y: 0, z: z - h/2}, // BACK  BOTTOM LEFT
+        {x: x + h/2, y: 0, z: z - h/2}, // BACK  BOTTOM RIGHT
+        {x: x + h/2, y: h, z: z - h/2}, // BACK  TOP RIGHT
+      ]
+    }
   
-      function makeCube(h, x, z) {
-        return [
-          {x: x - h/2, y: h, z: z + h/2}, // FRONT TOP LEFT
-          {x: x - h/2, y: 0, z: z + h/2}, // FRONT BOTTOM LEFT
-          {x: x + h/2, y: 0, z: z + h/2}, // FRONT BOTTOM RIGHT
-          {x: x + h/2, y: h, z: z + h/2}, // FRONT TOP RIGHT
-          {x: x - h/2, y: h, z: z - h/2}, // BACK  TOP LEFT
-          {x: x - h/2, y: 0, z: z - h/2}, // BACK  BOTTOM LEFT
-          {x: x + h/2, y: 0, z: z - h/2}, // BACK  BOTTOM RIGHT
-          {x: x + h/2, y: h, z: z - h/2}, // BACK  TOP RIGHT
-        ]
-      }
-  
-      init()
   </script>
 
  </html>

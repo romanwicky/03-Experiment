@@ -4,7 +4,10 @@
     </head>
 
     <body>
+        <!-- Hold visualizations -->
         <div id="visDiv"></div>
+
+        <!-- Input form -->
         <div id="input-submit">
             <form class="input-form">
                 <label for="input-text"> Answer: </label>
@@ -21,7 +24,6 @@
         switchChart()
         
         function switchChart() {
-            console.log("switchingn - counnter = " + counter)
             switch (counter) {
                 case 0:
                     next = "barchart.html";
@@ -37,7 +39,6 @@
             }
             document.getElementById("visDiv").innerHTML = "<object type='text/html' id='object-design' data ='" + next + "'></object>";
             counter += 1;
-            console.log(counter)
         }
 
         document.getElementById("submit-button").addEventListener("click", switchChart);
