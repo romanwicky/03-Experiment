@@ -41,19 +41,17 @@
     function verticalBarChart () {
 
       let data = []
-      let selectedData = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+      let selectors = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+      let SelectedData = ['a', 'd']
 
-      for(let i = 0; i <= 6; i++){
+      for(let i = 0; i < 6; i++){
         let value = Math.round(Math.random() * (50))
-        data.push([selectedData[i], value]) // you had data.push([[selectedData[i], value]]) with double [[]] making some sort of nested array
+        data.push([[selectors[i], value]])
       }
 
+      console.log(data)
       vertCount+=1;
       // Dummy data (to be randomly generated on backend)
-      dummyData = [ ['a', 10], ['b', 20], ['c', 25], ['d', 16], ['e', 37], ['f', 43] ] // assume: y axis ranges 1- 50
-      dummySelectedData = ['a', 'd']
-
-      console.log(data)
 
       // Create grid
       svg.append("rect")
@@ -63,9 +61,7 @@
       
       // x axis
       var x = d3.scaleBand()
-      .domain(data.map(function(d) {return d[0][0]})) // added second index here: can probably remove if you change around how you make the array 
-      //(maybe idk i feel what i did above would make this unessacary but here we are)
-      // that nested array was pissing off the map / scaleband that bc it wasn't reading the 'a' / 'b' / etc part right 
+      .domain(data.map(function(d) {return d[0]}))
       .range([0, width])
       .padding(0.2)
       svg.append("g")
@@ -94,7 +90,7 @@
       .attr("height", function(d) { return height - y(d[1]) })
 
       // Add dots to selected bars
-      dummySelectedData.forEach(id => {
+      SelectedData.forEach(id => {
         var selectedBar = d3.select('#' + id)
         selectedBar.append("circle")
         .attr("cx", function(d) { return x(d[0]) + x.bandwidth()/2 })
