@@ -45,14 +45,15 @@
 
       for(let i = 0; i <= 6; i++){
         let value = Math.round(Math.random() * (50))
-        data.push([[selectedData[i], value]])
+        data.push([selectedData[i], value]) // you had data.push([[selectedData[i], value]]) with double [[]] making some sort of nested array
       }
 
-      console.log(data)
       vertCount+=1;
       // Dummy data (to be randomly generated on backend)
       dummyData = [ ['a', 10], ['b', 20], ['c', 25], ['d', 16], ['e', 37], ['f', 43] ] // assume: y axis ranges 1- 50
       dummySelectedData = ['a', 'd']
+
+      console.log(data)
 
       // Create grid
       svg.append("rect")
@@ -62,7 +63,9 @@
       
       // x axis
       var x = d3.scaleBand()
-      .domain(dummyData.map(function(d) {return d[0]}))
+      .domain(data.map(function(d) {return d[0][0]})) // added second index here: can probably remove if you change around how you make the array 
+      //(maybe idk i feel what i did above would make this unessacary but here we are)
+      // that nested array was pissing off the map / scaleband that bc it wasn't reading the 'a' / 'b' / etc part right 
       .range([0, width])
       .padding(0.2)
       svg.append("g")
@@ -78,7 +81,7 @@
 
       // Create bars
       svg.selectAll("bar")
-      .data(dummyData)
+      .data(data)
       .enter()
       .append("g")
       .attr("id", function(d) { return d[0] })
