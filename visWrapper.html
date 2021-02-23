@@ -25,6 +25,7 @@
         sessionStorage.setItem("vertical", "true")
         let userAnswers = []
         let actualAnswers = []
+        let actualAnswersVolume = []
 
         if(testCounter == 0){
             switchChart();
@@ -88,7 +89,13 @@
                 document.getElementById("visDiv").innerHTML = "<object type='text/html' id='object-design' data ='" + next + "'></object>";
                 isFinished = false;
                 // console.log(sessionStorage.getItem("actualAnswer"))
-                actualAnswers.push(sessionStorage.getItem("actualAnswer"))
+                
+                if (counter == 2) {
+                actualAnswersVolume.push(sessionStorage.getItem("actualAnswerVolume")) 
+                console.log(sessionStorage.getItem("actualAnswerVolume"))
+                } else {
+                    actualAnswers.push(sessionStorage.getItem("actualAnswer"))
+                }
                 //console.log("actual answers from html: " + actualAnswers)
         }
 
@@ -103,12 +110,18 @@
                 } else if (i > 20 && i < 40) {
                     console.log("actual angle answer " + actualAnswers[i])
                     angleData.push([actualAnswers[i], userAnswers[i]]);
-                } else if (i > 40) {
-                    volumeData.push([actualAnswers[i], userAnswers[i]]);
                 }
+                //  else if (i > 40) {
+                //     volumeData.push([actualAnswersVolume[i], userAnswers[i]]);
+                // }
             }
+            for (let i = 0 ; i < 20 ; i++ ) {
+                volumeData.push([actualAnswersVolume[i], userAnswers[i]]);
+            }
+
+            // console.log(volumeData)
             //console.log("barchart" + barchartData)
-            //console.log("angle" + angleData)
+            console.log("angle" + angleData)
             //console.log("volume" + volumeData)
 
             let rows = [["ParticipantID", "TrialNum", "Vis", "TruePercent", "ReportedPercent"]]
@@ -118,6 +131,7 @@
             //get vis
             let randomID = "User" + Math.floor(Math.random() * 100)
             //fill barchart vert
+
             for(let i = 0; i < 10; i++){
 
                 rows.push([randomID, i, "barchart_vert", barchartData[i][0], barchartData[i][1]])
@@ -128,14 +142,14 @@
                 rows.push([randomID, i, "barchart_hor", barchartData[i][0], barchartData[i][1]])
             }
             //fill angle
-            for(let i = 20; i < 40; i++){
+            for(let i = 0; i < 20; i++){
 
                 rows.push([randomID, i, "angles", angleData[i][0], angleData[i][1]])
             }
             //fill volume
-            for(let i = 40; i < 60; i++){
+            for(let i = 0; i < 20; i++){
 
-                rows.push([randomID, i, "angles", volumeData[i][0], volumeData[i][1]])
+                rows.push([randomID, i, "volume", volumeData[i][0], volumeData[i][1]])
             }
 
             console.log(rows);
