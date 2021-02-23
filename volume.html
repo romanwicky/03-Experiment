@@ -86,6 +86,8 @@
       _cube.height = h
       cubesData.push(_cube)
 
+      sessionStorage.setItem("actualAnswer", Math.exp(h, 2))
+
       processData(cubes3D(cubesData))
 
       function generateSize(){
