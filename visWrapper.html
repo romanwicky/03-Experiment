@@ -17,16 +17,38 @@
         </div>
     </body>
 
-    <script>        
+    <script>       
         var next = null;
         var counter = 0;
-        var testCounter = -1;
+        var testCounter = 0;
         var isFinished = false;
 
-        if(testCounter == -1){
+        if(testCounter == 0){
             switchChart();
-                
         }
+
+        function nextButton(){
+            if( isFinished == true){
+                switchChart()
+            }
+            else{
+                let input = document.getElementById("input-text").value;
+                console.log(input);
+                //create csv file
+                
+
+
+
+
+
+                let resetText = document.getElementById("input-text");
+                resetText.value = " "
+                
+            }
+
+        }
+
+
 
 
         function switchChart() {
@@ -67,7 +89,7 @@
                 document.getElementById("visDiv").innerHTML = "<object type='text/html' id='object-design' data ='" + next + "'></object>";
                 isFinished = false;
                 }
-        document.getElementById("submit-button").addEventListener("click", switchChart);
+        document.getElementById("submit-button").addEventListener("click", nextButton);
     
     </script>
 </html>

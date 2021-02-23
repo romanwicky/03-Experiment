@@ -1,10 +1,10 @@
 <html>
   <head>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
     <link rel="stylesheet" href="stylesheet.css">
     
   </head>
- 
+
   <body>
     <div id="vis"></div>
     <div id="bartext">
@@ -45,11 +45,10 @@
       let SelectedData = ['a', 'd']
 
       for(let i = 0; i < 6; i++){
-        let value = Math.round(Math.random() * (50))
+        let value = Math.round(Math.random() * (50 - 5) + 5)
         data.push([selectors[i], value])
       }
 
-      console.log(data)
       vertCount+=1;
       // Dummy data (to be randomly generated on backend)
 
