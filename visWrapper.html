@@ -22,34 +22,30 @@
         var counter = 0;
         var testCounter = 0;
         var isFinished = false;
+        sessionStorage.setItem("vertical", "true")
+        let userAnswers = []
+        let actualAnswers = []
 
         if(testCounter == 0){
             switchChart();
         }
 
         function nextButton(){
-            if( isFinished == true){
-                switchChart()
+            // Get + clear input
+            let input = document.getElementById("input-text").value;
+            userAnswers.push(input)
+            let resetText = document.getElementById("input-text");
+            resetText.value = ""
+
+            // Decide vert vs hor barchart
+            if (next = "barchart.html") {
+                if (testCounter === 10) {
+                    sessionStorage.setItem("vertical", "false")
+                }
             }
-            else{
-                let input = document.getElementById("input-text").value;
-                console.log(input);
-                //create csv file
-                
-
-
-
-
-
-                let resetText = document.getElementById("input-text");
-                resetText.value = " "
-                
-            }
-
+            console.log("user answers from text field: " + userAnswers)
+            switchChart()
         }
-
-
-
 
         function switchChart() {
                 console.log(testCounter);
@@ -84,11 +80,40 @@
                         break;
                     default:
                         next = "finished.html";
+                        parseData()
                         break;
-                    }
+                }
                 document.getElementById("visDiv").innerHTML = "<object type='text/html' id='object-design' data ='" + next + "'></object>";
                 isFinished = false;
+                // console.log(sessionStorage.getItem("actualAnswer"))
+                actualAnswers.push(sessionStorage.getItem("actualAnswer"))
+                console.log("actual answers from html: " + actualAnswers)
+        }
+
+        function parseData() {
+            let barchartData = [];
+            let angleData = [];
+            let volumeData = [];
+
+            for (let i = 0 ; i < 60 ; i++) {
+                if (i < 20) {
+                    barchartData.push([actualAnswers[i], userAnswers[i]]);
+                } else if (i > 20 && i < 40) {
+                    angleData.push([actualAnswers[i], userAnswers[i]]);
+                } else if (i > 40) {
+                    volumeData.push([actualAnswers[i], userAnswers[i]]);
                 }
+            }
+            console.log(barchartData)
+            console.log(angleData)
+            console.log(volumeData)
+
+            const rows = ["ParticipantID", "TrialNum", "Vis", "TruePercent", "ReportedPercent"]
+            
+        }
+
+
+
         document.getElementById("submit-button").addEventListener("click", nextButton);
     
     </script>

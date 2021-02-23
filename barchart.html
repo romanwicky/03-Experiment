@@ -15,9 +15,6 @@
   <script>
     //10 vertical
     //10 Horizontal
-    let vertCount = 0;
-    let horCount = 0;
-
 
     // Set up grid dimensions
     var margin = {top: 20, right: 20, bottom: 20, left: 20}
@@ -32,25 +29,26 @@
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
-    if(vertCount <= 10){
+    let isVertical = sessionStorage.getItem("vertical")
+
+    if (isVertical == "true") {
       verticalBarChart()
-    }else if(vertCount > 10 || horCount <= 10){
+    } else {
       horizontalBarChart()
     }
 
     function verticalBarChart () {
-
       let data = []
       let selectors = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
       let SelectedData = ['a', 'd']
+     
 
       for(let i = 0; i < 6; i++){
         let value = Math.round(Math.random() * (50 - 5) + 5)
         data.push([selectors[i], value])
       }
 
-      vertCount+=1;
-      // Dummy data (to be randomly generated on backend)
+      sessionStorage.setItem("actualAnswer", data[0][1]/data[3][1])
 
       // Create grid
       svg.append("rect")
@@ -99,10 +97,18 @@
     }
 
     function horizontalBarChart() {
-      horCount += 1;
       // Dummy data (to be randomly generated on backend)
-      dummyData = [ ['a', 10], ['b', 20], ['c', 25], ['d', 16], ['e', 37], ['f', 43] ] // assume: y axis ranges 1- 50 
-      dummySelectedData = ['a', 'd'] 
+      // dummyData = [ ['a', 10], ['b', 20], ['c', 25], ['d', 16], ['e', 37], ['f', 43] ] // assume: y axis ranges 1- 50 
+      // dummySelectedData = ['a', 'd'] 
+
+      let data = []
+      let selectors = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+      let SelectedData = ['a', 'd']
+
+      for(let i = 0; i < 6; i++){
+        let value = Math.round(Math.random() * (50 - 5) + 5)
+        data.push([selectors[i], value])
+      }
 
       // Create grid
       svg.append("rect")
@@ -119,7 +125,7 @@
       
       // y axis
       var y = d3.scaleBand()
-      .domain(dummyData.map(function(d) {return d[0]}))
+      .domain(data.map(function(d) {return d[0]}))
       .range([0, height])
       .padding(0.2)
       svg.append("g")
@@ -128,7 +134,7 @@
 
       // Create bars
       svg.selectAll("bar")
-      .data(dummyData)
+      .data(data)
       .enter()
       .append("g")
       .attr("id", function(d) { return d[0] })
@@ -141,7 +147,7 @@
       .attr("height", y.bandwidth())
 
       // Add dots to selected bars 
-      dummySelectedData.forEach(id => {
+      SelectedData.forEach(id => {
         var selectedBar = d3.select('#' + id)
         selectedBar.append("circle")
         .attr("cx", -(margin.right/2))
