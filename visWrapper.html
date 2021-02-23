@@ -48,7 +48,7 @@
         }
 
         function switchChart() {
-                console.log(testCounter);
+                //console.log(testCounter);
                 switch (counter) {
                     case 0:
                         testCounter+=1;
@@ -89,7 +89,7 @@
                 isFinished = false;
                 // console.log(sessionStorage.getItem("actualAnswer"))
                 actualAnswers.push(sessionStorage.getItem("actualAnswer"))
-                console.log("actual answers from html: " + actualAnswers)
+                //console.log("actual answers from html: " + actualAnswers)
         }
 
         function parseData() {
@@ -107,9 +107,9 @@
                     volumeData.push([actualAnswers[i], userAnswers[i]]);
                 }
             }
-            console.log("barchart" + barchartData)
-            console.log("angle" + angleData)
-            console.log("volume" + volumeData)
+            //console.log("barchart" + barchartData)
+            //console.log("angle" + angleData)
+            //console.log("volume" + volumeData)
 
             let rows = [["ParticipantID", "TrialNum", "Vis", "TruePercent", "ReportedPercent"]]
 
