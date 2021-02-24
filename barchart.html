@@ -50,10 +50,15 @@
         data.push([selectors[i], value])
       }
 
-      //Fix it so the sessionStorage stores the correct value
+      let a1 = data[0][1]
+      let d1 = data[3][1]
+
+      let biggerChart = (Math.max(a1, d1))
+      let smallerChart = (Math.min(a1, d1))
+      //console.log(biggerChart, smallerChart)
       
 
-      sessionStorage.setItem("actualAnswer", data[0][1]/data[3][1])
+      sessionStorage.setItem("actualAnswer", biggerChart / smallerChart)
 
       // Create grid
       svg.append("rect")
@@ -114,8 +119,15 @@
         let value = Math.round(Math.random() * (50 - 5) + 5)
         data.push([selectors[i], value])
       }
+      let a1 = data[0][1]
+      let d1 = data[3][1]
 
-      sessionStorage.setItem("actualAnswer", data[0][1]/data[3][1])
+      let biggerChart = (Math.max(a1, d1))
+      let smallerChart = (Math.min(a1, d1))
+     // console.log(biggerChart, smallerChart)
+      
+
+      sessionStorage.setItem("actualAnswer", biggerChart / smallerChart)
 
       // Create grid
       svg.append("rect")

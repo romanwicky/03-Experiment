@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
         <script src="https://d3js.org/d3.v6.min.js"></script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
     </head>
 
     <body>
@@ -18,8 +19,7 @@
                 <label for="input-text" class="answerTxt"> Answer: </label>
                 <input type="text" id="input-text" oninput="enableBtn()">
                 <!-- UNCOMMENT AFTER TESTING IS DONE -->
-                <!-- <input type="button" id="submit-button" value="Next" disabled/> -->
-                <input type="button" id="submit-button" value="Next"/>
+                <input type="button" id="submit-button" value="Next" enabled/>
             </form>
            
         </div>
@@ -111,20 +111,19 @@
             switchChart();
         }
 
-        function enableBtn() {
-            // UNCOMMENT AFTER TESTING IS DONE
-            // if (document.getElementById("input-text").value != "") {
-            //     document.getElementById("submit-button").disabled = false
-            // } else {
-            //     document.getElementById("submit-button").disabled = true
-            // }
-        }
+        // function enableBtn() {
+        //      if (document.getElementById("input-text").value != "") {
+        //          document.getElementById("submit-button").disabled = false
+        //      } else {
+        //          document.getElementById("submit-button").disabled = true
+        //      }
+        // }
 
         function nextButton(){
             // Get + clear input
             let input = document.getElementById("input-text").value;
         
-            userAnswers.push(1)
+            userAnswers.push(input)
             let resetText = document.getElementById("input-text");
             resetText.value = ""
 
@@ -135,7 +134,7 @@
                 }
             }
             // UNCOMMENT AFTER TESTING IS DONE
-            // document.getElementById("submit-button").disabled = true
+            //document.getElementById("submit-button").disabled = true
             
             switchChart()
         }
@@ -192,7 +191,7 @@
                 
                 if (counter == 2) {
                 actualAnswersVolume.push(sessionStorage.getItem("actualAnswerVolume")) 
-                console.log(sessionStorage.getItem("actualAnswerVolume"))
+                //console.log(sessionStorage.getItem("actualAnswerVolume"))
                 } else {
                     actualAnswers.push(sessionStorage.getItem("actualAnswer"))
                 }
@@ -218,10 +217,10 @@
 
             // console.log(volumeData)
             //console.log("barchart" + barchartData)
-            console.log(angleData)
+            //console.log(angleData)
             //console.log("volume" + volumeData)
 
-            let rows = [["ParticipantID", "TrialNum", "Vis", "TruePercent", "ReportedPercent"]]
+            let rows = []
 
             //generate paticipantID
             //generate trialnum
@@ -231,46 +230,61 @@
 
             for(let i = 0; i < 10; i++){
 
-                rows.push([randomID, i, "barchart_vert", barchartData[i][0], barchartData[i][1]])
+                rows.push({"ParticipantID": randomID, "TrialNum": i, "Vis": "barchart_vert", "TruePercent": barchartData[i][0], "ReportedPercent": barchartData[i][1]})
             }
             //fill barchart hor
             for(let i = 10; i < 20; i++){
 
-                rows.push([randomID, i, "barchart_hor", barchartData[i][0], barchartData[i][1]])
+                rows.push({"ParticipantID": randomID, "TrialNum": i, "Vis": "barchart_hor",  "TruePercent": barchartData[i][0], "ReportedPercent": barchartData[i][1]})
             }
             //fill angle
             for(let i = 0; i < 20; i++){
 
-                rows.push([randomID, i, "angles", angleData[i][0], angleData[i][1]])
+                rows.push({"ParticipantID": randomID, "TrialNum":  i, "Vis": "angles",  "TruePercent": angleData[i][0], "ReportedPercent": angleData[i][1]})
             }
             //fill volume
             for(let i = 0; i < 20; i++){
 
-                rows.push([randomID, i, "volume", volumeData[i][0], volumeData[i][1]])
+                rows.push({"ParticipantID": randomID, "TrialNum": i, "Vis":  "volume", "TruePercent": volumeData[i][0], "ReportedPercent": volumeData[i][1]})
             }
 
-            console.log(rows);
+
+
+            var lineArray = [];
+
+            // rows.forEach(function(rowArray, index) {
+            //     var line = rowArray.join(",");
+            //      lineArray.push(index == 0 ? "data:text/csv;charset=utf-8," + line : line);
+            // });
+
+            // var csvContent = lineArray.join("\n");
+
+            // var d = new Date();
+            // var n = d.getTime();
+            // var nString = n.toString();
+
+            // var encodedUri = encodeURI(rows);
+            sendEmail()
 
 
 
-            let csvContent = "data:text/csv;charset=utf-8,"
+            //saves csv
+            function sendEmail() { 
+              Email.send({ 
+                Host: "smtp.gmail.com", 
+                Username: "biovisproject3@gmail.com", 
+                Password: "RomanDanyaMolly", 
+                To: 'biovisproject3@gmail.com', 
+                From: "biovisproject3@gmail.com", 
+                Subject: "CSV DATA", 
+                Body: rows, 
+              }).then(function (message) {alert("mail sent successfully") 
+                }); 
+            }  
 
-            rows.forEach(function(rowArray) {
-                let row = rows.join(",");
-                csvContent += row + "\r\n";
-            });
-
-            var d = new Date();
-            var n = d.getTime();
-
-            var encodedUri = encodeURI(csvContent);
-            var link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", n.toString() + ".csv");
-            document.body.appendChild(link); 
-
-            link.click(); 
         }
+
+
 
 
 
