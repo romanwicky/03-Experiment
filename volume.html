@@ -72,7 +72,7 @@
       // Small cube
       var z = 0 // y pos
       var x = 10 // x pos
-      var h = 2 // height
+      var h = 1 // height
       var _cube = makeCube(h, x, z)
       _cube.id = 'cube_1'
       _cube.height = h
@@ -89,10 +89,14 @@
 
 
       processData(cubes3D(cubesData))
+      let previousSize = 0;
 
       function generateSize(){
 
         let value = Math.round(Math.random() * (13 - 3) + 3)
+        if(value === previousSize){
+          value+=1
+        }
         console.log(value)
         return value
 

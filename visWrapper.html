@@ -81,6 +81,11 @@
                         break;
                     case 3:
                         next = "finished.html";
+                        document.getElementById("submit-button").disabled = true;
+                        var div = document.getElementById("input-submit");
+                        div.style.visibility = "hidden"
+                        div.style.display = "none";
+                        isFinished = true;
                         parseData()
                         break;
                     default:
@@ -104,24 +109,21 @@
             let angleData = [];
             let volumeData = [];
 
-            for (let i = 0 ; i < 60 ; i++) {
-                if (i < 20) {
+            for (let i = 0 ; i < 20 ; i++) {
+
                     barchartData.push([actualAnswers[i], userAnswers[i]]);
-                } else if (i > 20 && i < 40) {
-                    console.log("actual angle answer " + actualAnswers[i])
+                }
+            for  (let i = 0; i < 20; i++) {
+                    //console.log("actual angle answer " + actualAnswers[i])
                     angleData.push([actualAnswers[i], userAnswers[i]]);
                 }
-                //  else if (i > 40) {
-                //     volumeData.push([actualAnswersVolume[i], userAnswers[i]]);
-                // }
-            }
             for (let i = 0 ; i < 20 ; i++ ) {
                 volumeData.push([actualAnswersVolume[i], userAnswers[i]]);
-            }
+                }
 
             // console.log(volumeData)
             //console.log("barchart" + barchartData)
-            console.log("angle" + angleData)
+            console.log(angleData)
             //console.log("volume" + volumeData)
 
             let rows = [["ParticipantID", "TrialNum", "Vis", "TruePercent", "ReportedPercent"]]
@@ -129,7 +131,7 @@
             //generate paticipantID
             //generate trialnum
             //get vis
-            let randomID = "User" + Math.floor(Math.random() * 100)
+            let randomID = "Test" + Math.floor(Math.random() * 100)
             //fill barchart vert
 
             for(let i = 0; i < 10; i++){
@@ -163,13 +165,16 @@
                 csvContent += row + "\r\n";
             });
 
+            var d = new Date();
+            var n = d.getTime();
+
             var encodedUri = encodeURI(csvContent);
             var link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "test.csv");
-            document.body.appendChild(link); // Required for FF
+            link.setAttribute("download", n.toString() + ".csv");
+            document.body.appendChild(link); 
 
-            link.click(); // This will download the data file named "my_data.csv".
+            link.click(); 
         }
 
 
