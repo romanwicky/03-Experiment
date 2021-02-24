@@ -7,8 +7,10 @@
  
   <body>
     <svg id="vis"></svg>
-    <p>This test is to see how the human brain distinguishes and understands the difference in volume between a small cube and a large cube.</p>
-    <p>How many times can the small cube fit in the large cube?</p>
+    <div class="qTxt">
+      <p>This test is to see how the human brain distinguishes and understands the difference in volume between a small cube and a large cube.</p>
+      <p>How many small cubes can fit in the larger cube?</p>
+    </div>
   </body>
 
   <script>
@@ -67,12 +69,13 @@
   
     // Initialize cubes
     function init() {
+      let previousSize = 0;
       cubesData = []
 
       // Small cube
       var z = 0 // y pos
       var x = 10 // x pos
-      var h = 2 // height
+      var h = 1 // height
       var _cube = makeCube(h, x, z)
       _cube.id = 'cube_1'
       _cube.height = h
@@ -93,14 +96,19 @@
       function generateSize(){
 
         let value = Math.round(Math.random() * (13 - 3) + 3)
-        console.log(value)
+        if(value === previousSize){
+          value+=1
+        }
+        previousSize = value
         return value
 
       }
 
-      console.log(Math.exp(h,2))
 
-      sessionStorage.setItem("actualAnswerVolume", Math.exp(h, 2))
+      console.log(h)
+      console.log(Math.pow(h,2))
+
+      sessionStorage.setItem("actualAnswerVolume", Math.pow(h, 2))
 
     }
 

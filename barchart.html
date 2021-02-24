@@ -5,10 +5,12 @@
     
   </head>
 
-  <body>
+  <body class="experimentBody">
     <div id="vis"></div>
-    <div id="bartext">
-      <p>This test is to see how the human brain perceives data with horizontal vs. stacked bar charts. </p>
+    <div class="qTxt">
+      <p>This test is to see how the human brain perceives data with horizontal vs. stacked bar charts.<br>
+          How many times can the smaller barchart fit in the larger one?
+      </p>
     </div>
   </body>
 
@@ -48,7 +50,15 @@
         data.push([selectors[i], value])
       }
 
-      sessionStorage.setItem("actualAnswer", data[0][1]/data[3][1])
+      let a1 = data[0][1]
+      let d1 = data[3][1]
+
+      let biggerChart = (Math.max(a1, d1))
+      let smallerChart = (Math.min(a1, d1))
+      //console.log(biggerChart, smallerChart)
+      
+
+      sessionStorage.setItem("actualAnswer", biggerChart / smallerChart)
 
       // Create grid
       svg.append("rect")
@@ -109,8 +119,15 @@
         let value = Math.round(Math.random() * (50 - 5) + 5)
         data.push([selectors[i], value])
       }
+      let a1 = data[0][1]
+      let d1 = data[3][1]
 
-      sessionStorage.setItem("actualAnswer", data[0][1]/data[3][1])
+      let biggerChart = (Math.max(a1, d1))
+      let smallerChart = (Math.min(a1, d1))
+     // console.log(biggerChart, smallerChart)
+      
+
+      sessionStorage.setItem("actualAnswer", biggerChart / smallerChart)
 
       // Create grid
       svg.append("rect")

@@ -1,82 +1,101 @@
 body {
     text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
 }
 
+#wrapperBody {
+    height: 1000px;
+}
+
+#visWrapper {
+    height: 1000px;
+}
+
+p {
+    line-height: 150%;
+}
+
+/* Form */
 #input-submit {
     width: 50%;
     border: 3px #204DF5;
     padding: 10px;
     display: flex;
     position: fixed;
-    bottom: 40px;
+    bottom: 0;
     justify-content: center;
     margin: 5% auto; 
     left: 0;
     right: 0;
 }
 
+.input-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+input {
+    margin-right: 10px;
+}
+
+label {
+    margin: auto;
+    margin-right: 20px;
+}
+
+/* Buttons */
+#start-button {
+    margin: 20px 0 20px 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+}
+
+input[type=button] {
+    border: none;
+    padding: 10px 40px 10px 40px;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Headers */
+.headerDiv {
+    margin: 50px 50px 0 50px;
+    color: #445668; 
+    font-family: 'Lato', sans-serif;
+}
+
+.header {
+    font-size: 40px; 
+    margin: 0 0 20px 0; 
+    text-shadow: 0px 1px 0px #f2f2f2;
+    font-weight: 400;
+}
+
+.subHeader {
+    font-size: 40px;
+    margin: 0 0 20px 0; 
+}
+
+/* Misc */
 #expDiv {
     width: 60%;
     margin: 10% auto; 
-    /* line-height: 150%; */
-    font-family: "Roboto", sans-serif;
     font-size: large;
 }
 
 #finished {
-    width: 60%;
     margin: 10% auto; 
     line-height: 150%;
-    font-family: "Roboto", sans-serif;
-}
-
-
-p {
-    font-family: "Roboto", sans-serif;
+    margin-top: 100px;
 }
 
 .hidden {
     opacity: 0;
     margin: 0px !important;
     height: 0px;
-}
-
-#tilt-text {
-    font-family: "Roboto", sans-serif;
-}
-
-#bartext {
-    font-family: "Roboto", sans-serif;
-    margin: 50px 0 20px 0;
-}
-
-input[type=button] {
-    font-family: "Roboto", sans-serif;
-    border: none;
-    padding: 10px 20px 10px 20px;
-    background-color: cornflowerblue;
-    color: white;
-   
-}
-
-
-
-#object-design { 
-    width: 550px; 
-    height: 90%;
-    display: block;
-    margin-left: auto; 
-    margin-right: auto; 
-}
-
-#header {
-    padding-top: 30px;
-    font-family: "Roboto", sans-serif;
-    font-size: 50px; 
-    color: #445668; 
-    text-transform: uppercase;
-    margin: 0 0 35px 0; 
-    text-shadow: 0px 1px 0px #f2f2f2;
 }
 
 #submit-button:hover {
@@ -95,18 +114,19 @@ input[type=button] {
     cursor: pointer;
 }
 
-.input-form {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
+.qTxt {
+    margin: 30px 0 0 0;
 }
 
-input {
-    margin-right: 10px;
+
+
+#object-design { 
+    width: 550px; 
+    height: 90%;
+    display: block;
+    margin-left: auto; 
+    margin-right: auto; 
+
 }
 
-label {
-    margin-right: 10px;
-    padding-top: 5px;
-    font-family: "Roboto", sans-serif;
-}
+
