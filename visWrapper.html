@@ -16,7 +16,9 @@
         <div id="input-submit">
             <form class="input-form">
                 <label for="input-text" class="answerTxt"> Answer: </label>
-                <input type="text" id="input-text">
+                <input type="text" id="input-text" oninput="enableBtn()">
+                <!-- UNCOMMENT AFTER TESTING IS DONE -->
+                <!-- <input type="button" id="submit-button" value="Next" disabled/> -->
                 <input type="button" id="submit-button" value="Next"/>
             </form>
            
@@ -24,8 +26,6 @@
     </body>
 
     <script>
-        var lineData = [["10%", 40], ["50%", 40], ["90%", 40]]
-
         var svg = d3.select("#trialCounter")
         .append('svg')
         .attr("width", "100%")
@@ -111,9 +111,19 @@
             switchChart();
         }
 
+        function enableBtn() {
+            // UNCOMMENT AFTER TESTING IS DONE
+            // if (document.getElementById("input-text").value != "") {
+            //     document.getElementById("submit-button").disabled = false
+            // } else {
+            //     document.getElementById("submit-button").disabled = true
+            // }
+        }
+
         function nextButton(){
             // Get + clear input
             let input = document.getElementById("input-text").value;
+        
             userAnswers.push(1)
             let resetText = document.getElementById("input-text");
             resetText.value = ""
@@ -124,7 +134,9 @@
                     sessionStorage.setItem("vertical", "false")
                 }
             }
-            //console.log("user answers from text field: " + userAnswers)
+            // UNCOMMENT AFTER TESTING IS DONE
+            // document.getElementById("submit-button").disabled = true
+            
             switchChart()
         }
 

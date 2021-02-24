@@ -98,6 +98,17 @@ GitHub Details
 a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
 ```
 
+Design Achievements: 
+- Button interaction
+- Basic color scheme (write it up so it sounds legit)
+- Font combos (again make it legit)
+
+- progress bar (design or tech?)
+
+Tech Achievements: 
+- form validation
 
 Resources
 http://bl.ocks.org/mosley812/43194ec6f540c05e48273d0cd8877d2c
+https://d19jftygre6gh0.cloudfront.net/Niekes/613d43d39372f99ae2dcea14f0f90617
+https://github.com/Niekes/d3-3d/blob/master/src/primitiveShapes/cube.js

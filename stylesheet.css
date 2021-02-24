@@ -4,6 +4,14 @@ body {
     font-weight: 400;
 }
 
+#wrapperBody {
+    height: 1000px;
+}
+
+#visWrapper {
+    height: 1000px;
+}
+
 p {
     line-height: 150%;
 }
