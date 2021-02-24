@@ -25,6 +25,7 @@
         sessionStorage.setItem("vertical", "true")
         let userAnswers = []
         let actualAnswers = []
+        let actualAnswersVolume = []
 
         if(testCounter == 0){
             switchChart();
@@ -33,7 +34,7 @@
         function nextButton(){
             // Get + clear input
             let input = document.getElementById("input-text").value;
-            userAnswers.push(input)
+            userAnswers.push(1)
             let resetText = document.getElementById("input-text");
             resetText.value = ""
 
@@ -43,12 +44,12 @@
                     sessionStorage.setItem("vertical", "false")
                 }
             }
-            console.log("user answers from text field: " + userAnswers)
+            //console.log("user answers from text field: " + userAnswers)
             switchChart()
         }
 
         function switchChart() {
-                console.log(testCounter);
+                //console.log(testCounter);
                 switch (counter) {
                     case 0:
                         testCounter+=1;
@@ -78,16 +79,24 @@
                             counter += 1;
                         }
                         break;
-                    default:
+                    case 3:
                         next = "finished.html";
                         parseData()
+                        break;
+                    default:
                         break;
                 }
                 document.getElementById("visDiv").innerHTML = "<object type='text/html' id='object-design' data ='" + next + "'></object>";
                 isFinished = false;
                 // console.log(sessionStorage.getItem("actualAnswer"))
-                actualAnswers.push(sessionStorage.getItem("actualAnswer"))
-                console.log("actual answers from html: " + actualAnswers)
+                
+                if (counter == 2) {
+                actualAnswersVolume.push(sessionStorage.getItem("actualAnswerVolume")) 
+                console.log(sessionStorage.getItem("actualAnswerVolume"))
+                } else {
+                    actualAnswers.push(sessionStorage.getItem("actualAnswer"))
+                }
+                //console.log("actual answers from html: " + actualAnswers)
         }
 
         function parseData() {
@@ -99,17 +108,68 @@
                 if (i < 20) {
                     barchartData.push([actualAnswers[i], userAnswers[i]]);
                 } else if (i > 20 && i < 40) {
+                    console.log("actual angle answer " + actualAnswers[i])
                     angleData.push([actualAnswers[i], userAnswers[i]]);
-                } else if (i > 40) {
-                    volumeData.push([actualAnswers[i], userAnswers[i]]);
                 }
+                //  else if (i > 40) {
+                //     volumeData.push([actualAnswersVolume[i], userAnswers[i]]);
+                // }
             }
-            console.log(barchartData)
-            console.log(angleData)
-            console.log(volumeData)
+            for (let i = 0 ; i < 20 ; i++ ) {
+                volumeData.push([actualAnswersVolume[i], userAnswers[i]]);
+            }
 
-            const rows = ["ParticipantID", "TrialNum", "Vis", "TruePercent", "ReportedPercent"]
-            
+            // console.log(volumeData)
+            //console.log("barchart" + barchartData)
+            console.log("angle" + angleData)
+            //console.log("volume" + volumeData)
+
+            let rows = [["ParticipantID", "TrialNum", "Vis", "TruePercent", "ReportedPercent"]]
+
+            //generate paticipantID
+            //generate trialnum
+            //get vis
+            let randomID = "User" + Math.floor(Math.random() * 100)
+            //fill barchart vert
+
+            for(let i = 0; i < 10; i++){
+
+                rows.push([randomID, i, "barchart_vert", barchartData[i][0], barchartData[i][1]])
+            }
+            //fill barchart hor
+            for(let i = 10; i < 20; i++){
+
+                rows.push([randomID, i, "barchart_hor", barchartData[i][0], barchartData[i][1]])
+            }
+            //fill angle
+            for(let i = 0; i < 20; i++){
+
+                rows.push([randomID, i, "angles", angleData[i][0], angleData[i][1]])
+            }
+            //fill volume
+            for(let i = 0; i < 20; i++){
+
+                rows.push([randomID, i, "volume", volumeData[i][0], volumeData[i][1]])
+            }
+
+            console.log(rows);
+
+
+
+            let csvContent = "data:text/csv;charset=utf-8,"
+
+            rows.forEach(function(rowArray) {
+                let row = rows.join(",");
+                csvContent += row + "\r\n";
+            });
+
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "test.csv");
+            document.body.appendChild(link); // Required for FF
+
+            link.click(); // This will download the data file named "my_data.csv".
         }
 
 
