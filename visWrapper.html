@@ -1,23 +1,103 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <script src="https://d3js.org/d3.v6.min.js"></script>
     </head>
 
     <body>
+        <div id="trialCounter">
+            <!-- Trial 0/20 -->
+        </div>
+
         <!-- Hold visualizations -->
         <div id="visDiv"></div>
 
         <!-- Input form -->
         <div id="input-submit">
             <form class="input-form">
-                <label for="input-text"> Answer: </label>
+                <label for="input-text" class="answerTxt"> Answer: </label>
                 <input type="text" id="input-text">
                 <input type="button" id="submit-button" value="Next"/>
             </form>
+           
         </div>
     </body>
 
-    <script>       
+    <script>
+        var lineData = [["10%", 40], ["50%", 40], ["90%", 40]]
+
+        var svg = d3.select("#trialCounter")
+        .append('svg')
+        .attr("width", "100%")
+        .attr("height", 80)
+
+        svg.append("circle")
+        .attr("cx", "10%")
+        .attr("cy", 30)
+        .attr("r", 20)
+        .attr("id", "barProgress")
+        .attr("fill", "none")
+        .style("stroke-width", 1.5)
+        .style("stroke", "black")
+        
+        svg.append("circle")
+        .attr("cx", "50%")
+        .attr("cy", 30)
+        .attr("r", 20)
+        .attr("id", "angleProgress")
+        .attr("fill", "none")
+        .style("stroke-width", 1.5)
+        .style("stroke", "black")
+        
+        svg.append("circle")
+        .attr("cx", "90%")
+        .attr("cy", 30)
+        .attr("r", 20)
+        .attr("id", "volProgress")
+        .attr("fill", "none")
+        .style("stroke-width", 1.5)
+        .style("stroke", "black")
+
+        svg.append("line")           
+        .style("stroke", "black")  
+        .style("stroke-width", 1.5) 
+        .attr("x1", "13.75%")        
+        .attr("y1", 32.5)     
+        .attr("x2", "46.25%")       
+        .attr("y2", 32.5)     
+        
+        svg.append("line")           
+        .style("stroke", "black")  
+        .style("stroke-width", 1.5) 
+        .attr("x1", "53.75%")        
+        .attr("y1", 32.5)     
+        .attr("x2", "86.25%")       
+        .attr("y2", 32.5)
+
+        svg.append("text")
+        .text("Bar")
+        .attr("dy", "1em")
+        .attr("x", "7.5%")
+        .attr("y", 60)
+        .attr("font-family", '"Roboto", sans-serif')
+    
+        svg.append("text")
+        .text("Angle")
+        .attr("dy", "1em")
+        .attr("x", "46.5%")
+        .attr("y", 60)
+
+        svg.append("text")
+        .text("Volume")
+        .attr("dy", "1em")
+        .attr("x", "85%")
+        .attr("y", 60)
+
+        function updateProgress(progressId) {
+            var id = "#" + progressId
+            d3.select(id).attr("fill", "#6495ed")
+        }
+
         var next = null;
         var counter = 0;
         var testCounter = 0;
@@ -61,6 +141,7 @@
                         }  
                         break;
                     case 1:
+                        updateProgress("barProgress")
                         testCounter+=1;
                         next = "tilt-angle.html";
                         if(testCounter == 20){
@@ -71,6 +152,7 @@
 
                         break;
                     case 2:
+                        updateProgress("angleProgress")
                         testCounter+=1;
                         next = "volume.html";
                         if(testCounter == 20){
@@ -80,6 +162,7 @@
                         }
                         break;
                     case 3:
+                        updateProgress("volProgress")
                         next = "finished.html";
                         document.getElementById("submit-button").disabled = true;
                         var div = document.getElementById("input-submit");
