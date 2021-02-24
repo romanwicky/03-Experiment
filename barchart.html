@@ -8,7 +8,9 @@
   <body>
     <div id="vis"></div>
     <div id="bartext">
-      <p>This test is to see how the human brain perceives data with horizontal vs. stacked bar charts. </p>
+      <p>This test is to see how the human brain perceives data with horizontal vs. stacked bar charts.<br>
+          How many times can the smaller barchart fit in the larger one?
+      </p>
     </div>
   </body>
 
@@ -47,6 +49,9 @@
         let value = Math.round(Math.random() * (50 - 5) + 5)
         data.push([selectors[i], value])
       }
+
+      //Fix it so the sessionStorage stores the correct value
+      
 
       sessionStorage.setItem("actualAnswer", data[0][1]/data[3][1])
 
