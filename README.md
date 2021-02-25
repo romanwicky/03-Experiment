@@ -1,7 +1,43 @@
+Assignment 3 - Replicating a Classic Experiment 
+Danya Baron, Roman Wicky, Molly Wirtz
+
 https://romanwicky.github.io/03-Experiment/index.html
 
 
-Assignment 3 - Replicating a Classic Experiment  
+# Background
+
+In this assignment we implemented a controlled experiment using bar chart visualizations, angles, and volume visualizations. This experiment is based on
+the paper by Cleveland and McGill, where they tested pie and stack chart variants. We replicated this experiment, but instead of just using stack charts,
+we also used angles, and volume. 
+
+## Goal 
+
+1) Test 3 different visualizations, and run experiment with 10 participants.
+2) Implement data generation and error calculation functions by Cleveland and McGill's paper.
+3) Basic Analysis and Reporting of Results
+
+# Experiment
+
+We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We had about 20 randomly generated bar charts, volume SVG's, and angles in the experiment. These screenshots are from our home page, one screenshot per visualization, and our end visualization.
+
+# Homepage 
+
+
+# Bar Chart
+
+
+# Angle
+
+
+# Volume
+
+
+
+
+
+
+
+
 ===
 
 For the scope of this project, assume the role of a scientist who runs experiments for a living.
