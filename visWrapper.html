@@ -99,7 +99,14 @@
 
         function updateProgress(progressId) {
             var id = "#" + progressId
-            d3.select(id).attr("fill", "#6495ed")
+            if (progressId === "volProgress") {
+                d3.select(id).attr("fill", "#4CAF50")
+                d3.select("#barProgress").attr("fill", "#4CAF50")
+                d3.select("#angleProgress").attr("fill", "#4CAF50")
+            }
+            else { 
+                d3.select(id).attr("fill", "#6495ed")
+            }
         }
 
         var next = null;
