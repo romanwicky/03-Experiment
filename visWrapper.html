@@ -115,7 +115,8 @@
         var isFinished = false;
         sessionStorage.setItem("vertical", "true")
         let userAnswers = []
-        let actualAnswers = []
+        let actualAnswersBar = []
+        let actualAnswersAngle = []
         let actualAnswersVolume = []
 
         if(testCounter == 0){
@@ -198,15 +199,23 @@
                 }
                 document.getElementById("visDiv").innerHTML = "<object type='text/html' id='object-design' data ='" + next + "'></object>";
                 isFinished = false;
-                // console.log(sessionStorage.getItem("actualAnswer"))
+                console.log(sessionStorage.getItem("actualAnswerBar"))
+                console.log(counter)
                 
+                if (counter == 0) {
+                    actualAnswersBar.push(sessionStorage.getItem("actualAnswerBar"))
+                }
+                if (counter == 1) {
+                    actualAnswersAngle.push(sessionStorage.getItem("actualAnswerAngle"))
+                }
                 if (counter == 2) {
-                actualAnswersVolume.push(sessionStorage.getItem("actualAnswerVolume")) 
+                    actualAnswersVolume.push(sessionStorage.getItem("actualAnswerVolume")) 
                 //console.log(sessionStorage.getItem("actualAnswerVolume"))
-                } else {
-                    actualAnswers.push(sessionStorage.getItem("actualAnswer"))
                 }
                 //console.log("actual answers from html: " + actualAnswers)
+                console.log(actualAnswersBar)
+                console.log(actualAnswersAngle)
+                console.log(actualAnswersVolume)
         }
 
         function parseData() {
@@ -215,16 +224,14 @@
             let volumeData = [];
 
             for (let i = 0 ; i < 20 ; i++) {
-
-                    barchartData.push([actualAnswers[i], userAnswers[i]]);
-                }
+                barchartData.push([actualAnswersBar[i], userAnswers[i]]);
+            }
             for  (let i = 0; i < 20; i++) {
-                    //console.log("actual angle answer " + actualAnswers[i])
-                    angleData.push([actualAnswers[i], userAnswers[i]]);
-                }
+                angleData.push([actualAnswersAngle[i], userAnswers[i]]);
+            }
             for (let i = 0 ; i < 20 ; i++ ) {
                 volumeData.push([actualAnswersVolume[i], userAnswers[i]]);
-                }
+            }
 
             // console.log(volumeData)
             //console.log("barchart" + barchartData)
