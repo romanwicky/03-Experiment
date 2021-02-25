@@ -27,19 +27,19 @@ We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We had ab
 
 ## Bar Chart
 
-![ScreenShot]()
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/barchart.png)
 
 ## Angle
 
-screenshot here
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/angle.png)
 
 ## Volume
 
-screenshot here
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/volume.png)
 
 ## Finish Page
 
-screenshot here
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/finished%20page.png)
 
 
 # Analysis
@@ -53,7 +53,6 @@ Here is the result percent of errors between each chart:
 (insert log percent error screenshot)
 
 
-
 # 95% Confidence Interval
 
 (insert screenshot of this here)
@@ -65,13 +64,15 @@ Here is the result percent of errors between each chart:
 
 - Experimented with more d3.js, including using a volume visualization which was not yet taught in class.
 
+- 
+
 
 
 # Design Achievements
 
 - Button interaction. When hovered, both buttons raise and change color to promote interactivity within the website.
 
-- Progress Bar. We created a progress bar at the top of the page, to indicate when a user was finished with a certain visualization such as the bar charts. When the user is finished with the bar chart, the barchart circle turns to our color scheme cornflower blue.
+- Progress Bar. We created a progress bar at the top of the page, to indicate when a user was finished with a certain visualization such as the bar charts. When the user is finished with the bar chart, the barchart circle turns to our color scheme cornflower blue. There are circles turn green when the user finishes the whole experiment.
 
 - Basic color scheme. We used a color scheme to keep things simple and easy for the user to read. Our main color on the progress chart was cornflower blue, and
 when the button is hovered, that color changes to green.
