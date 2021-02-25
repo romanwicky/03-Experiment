@@ -27,15 +27,15 @@ We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We had ab
 
 ## Bar Chart
 
-![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/barchart.png)
+![ScreenShot]()
 
 ## Angle
 
-![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/angle.png)
+![ScreenShot]()
 
 ## Volume
 
-![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/volume.png)
+![ScreenShot]()
 
 ## Finish Page
 
