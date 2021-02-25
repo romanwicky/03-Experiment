@@ -7,7 +7,9 @@
 
     <body>
         <div style="display: flex; justify-content: center;">
-            <div id="trialCounter"></div>
+            <div id="trialCounter">
+                <label></label>
+            </div>
 
             <!-- Hold visualizations -->
             <div id="visDiv" style="height: 700px; overflow: hidden;"></div>
@@ -28,7 +30,7 @@
     <script>
         var svg = d3.select("#trialCounter")
         .append('svg')
-        .attr("width", 90)
+        .attr("width", 120)
         .attr("height", 500)
         // .attr("")
 
@@ -40,6 +42,7 @@
         .attr("fill", "none")
         .style("stroke-width", 1.5)
         .style("stroke", "black")
+        .text
         
         svg.append("circle")
         .attr("cx", "75%")
@@ -74,6 +77,25 @@
         .attr("y1", "54%")     
         .attr("x2", "75%")        
         .attr("y2", "86%")
+
+        svg.append("text")
+        .text("Bar")
+        // .attr("dy", "2em")
+        .attr("x", "13%")
+        .attr("y", 55)
+        .attr("font-family", '"Roboto", sans-serif')
+
+        svg.append("text")
+        .text("Angle")
+        // .attr("dy", "1em")
+        .attr("x", 1)
+        .attr("y", 256)
+
+        svg.append("text")
+        .text("Volume")
+        //.attr("dy", "1em")
+        .attr("x", 0)
+        .attr("y", 455)
 
         function updateProgress(progressId) {
             var id = "#" + progressId
