@@ -20,28 +20,28 @@ we also used angles, and volume.
 
 We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We had about 20 randomly generated bar charts, volume SVG's, and angles in the experiment. These screenshots are from our home page, one screenshot per visualization, and our end visualization.
 
-# Homepage 
+## Homepage 
 
 ![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/homepage.png)
 
-# Bar Chart
+## Bar Chart
 
 screenshot here
 
-# Angle
+## Angle
 
 screenshot here
 
-# Volume
+## Volume
 
 screenshot here
 
-# Finish Page
+## Finish Page
 
 screenshot here
 
 
-## Analysis
+# Analysis
 
 We used JavaScript to read the CSV file, and organize the data and calculate the percent error.
 
@@ -52,7 +52,7 @@ Here is the percent of errors:
 
 
 
-## 95% Confidence Interval
+# 95% Confidence Interval
 
 
 
