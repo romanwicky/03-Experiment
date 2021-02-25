@@ -1,4 +1,5 @@
-Assignment 3 - Replicating a Classic Experiment 
+# Assignment 3 - Replicating a Classic Experiment 
+
 Danya Baron, Roman Wicky, Molly Wirtz
 
 https://romanwicky.github.io/03-Experiment/index.html
@@ -18,7 +19,7 @@ we also used angles, and volume.
 
 # Experiment
 
-We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We had about 20 randomly generated bar charts, volume SVG's, and angles in the experiment. These screenshots are from our home page, one screenshot per visualization, and our end visualization.
+We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We had about 20 randomly generated bar charts, volume SVG's, and angles in the experiment. These screenshots are from our home page, one screenshot per visualization, and our end visualization. Our hypotheses included to see if the user could determine how much a cube could fit into a bigger cube, guessing the angles of a tilt, and how much a smaller bar chart could fit into a larger bar chart.
 
 ## Homepage 
 
@@ -47,27 +48,35 @@ We used JavaScript to read the CSV file, and organize the data and calculate the
 
 We used Log-base-2 like the Cleveland and McGill paper to calculate the error percent.
 
-Here is the percent of errors:
+Here is the result percent of errors between each chart:
+
+(insert log percent error screenshot)
 
 
 
 
 # 95% Confidence Interval
 
+(insert screenshot of this here)
 
 
 # Technical Achievements
 
 - Sent data from the trials into an email, where we stored all of the CSV files from each trial.
 
+- Experimented with more d3.js, including using a volume visualization which was not yet taught in class.
+
 
 
 # Design Achievements
 
 - Button interaction. When hovered, both buttons raise and change color to promote interactivity within the website.
+
 - Progress Bar. We created a progress bar at the top of the page, to indicate when a user was finished with a certain visualization such as the bar charts. When the user is finished with the bar chart, the barchart circle turns to our color scheme cornflower blue.
+
 - Basic color scheme. We used a color scheme to keep things simple and easy for the user to read. Our main color on the progress chart was cornflower blue, and
 when the button is hovered, that color changes to green.
+
 - Font combination. We used the 'Roboto' font, imported from the Google fonts API.
 
 
