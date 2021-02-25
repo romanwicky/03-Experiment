@@ -22,17 +22,53 @@ We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We had ab
 
 # Homepage 
 
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/homepage.png)
 
 # Bar Chart
 
+screenshot here
 
 # Angle
 
+screenshot here
 
 # Volume
 
+screenshot here
+
+# Finish Page
+
+screenshot here
 
 
+## Analysis
+
+We used JavaScript to read the CSV file, and organize the data and calculate the percent error.
+
+We used Log-base-2 like the Cleveland and McGill paper to calculate the error percent.
+
+Here is the percent of errors:
+
+
+
+
+## 95% Confidence Interval
+
+
+
+# Technical Achievements
+
+- Sent data from the trials into an email, where we stored all of the CSV files from each trial.
+
+
+
+# Design Achievements
+
+- Button interaction. When hovered, both buttons raise and change color to promote interactivity within the website.
+- Progress Bar. We created a progress bar at the top of the page, to indicate when a user was finished with a certain visualization such as the bar charts. When the user is finished with the bar chart, the barchart circle turns to our color scheme cornflower blue.
+- Basic color scheme. We used a color scheme to keep things simple and easy for the user to read. Our main color on the progress chart was cornflower blue, and
+when the button is hovered, that color changes to green.
+- Font combination. We used the 'Roboto' font, imported from the Google fonts API.
 
 
 
