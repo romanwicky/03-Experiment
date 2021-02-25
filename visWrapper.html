@@ -21,7 +21,7 @@
                 <label for="input-text" class="answerTxt"> Answer: </label>
                 <input type="text" id="input-text" oninput="enableBtn()">
                 <!-- UNCOMMENT AFTER TESTING IS DONE -->
-                <input type="button" id="submit-button" value="Next" enabled/>
+                <input type="button" id="submit-button" value="Next" disabled />
             </form>
            
         </div>
@@ -113,25 +113,33 @@
         var counter = 0;
         var testCounter = 0;
         var isFinished = false;
-        sessionStorage.setItem("vertical", "true")
         let userAnswers = []
         let actualAnswersBar = []
         let actualAnswersAngle = []
         let actualAnswersVolume = []
+        let firstStart = true;
+
+        if(firstStart){
+            sessionStorage.clear()
+            firstStart = false;
+        }
+
+        sessionStorage.setItem("vertical", "true")
 
         if(testCounter == 0){
             switchChart();
         }
 
-        // function enableBtn() {
-        //      if (document.getElementById("input-text").value != "") {
-        //          document.getElementById("submit-button").disabled = false
-        //      } else {
-        //          document.getElementById("submit-button").disabled = true
-        //      }
-        // }
+        function enableBtn() {
+              if (document.getElementById("input-text").value != "") {
+                  document.getElementById("submit-button").disabled = false
+              } else {
+                  document.getElementById("submit-button").disabled = true
+              }
+        }
 
         function nextButton(){
+            testCounter+=1;
             // Get + clear input
             let input = document.getElementById("input-text").value;
         
@@ -146,18 +154,42 @@
                 }
             }
             // UNCOMMENT AFTER TESTING IS DONE
-            //document.getElementById("submit-button").disabled = true
-            
+            document.getElementById("submit-button").disabled = true
+
+            //console.log(sessionStorage.getItem("actualAnswerBar"))
+            //console.log(counter)
+
             switchChart()
+            console.log("Counter: " + counter)
+            console.log("Test Counter: " + testCounter)
+            
+            if (counter == 0) {
+                console.log("Stored bar")
+                actualAnswersBar.push(sessionStorage.getItem("actualAnswerBar"))
+            }
+            if (counter == 1) {
+                console.log("Stored angle")
+                actualAnswersAngle.push(sessionStorage.getItem("actualAnswerAngle"))
+            }
+            if (counter == 2) {
+                console.log("Stored vol")
+                actualAnswersVolume.push(sessionStorage.getItem("actualAnswerVolume")) 
+            //console.log(sessionStorage.getItem("actualAnswerVolume"))
+            }
+            //console.log("actual answers from html: " + actualAnswers)
+            //console.log("Test " + actualAnswersBar)
+            //console.log(actualAnswersAngle)
+            //console.log(actualAnswersVolume)
+            
         }
 
         function switchChart() {
                 //console.log(testCounter);
                 switch (counter) {
                     case 0:
-                        testCounter+=1;
                         next = "barchart.html";
                         if(testCounter == 20){
+                            console.log("Tet")
                             isFinished = true;
                             testCounter = 0;
                             counter += 1;
@@ -165,7 +197,6 @@
                         break;
                     case 1:
                         updateProgress("barProgress")
-                        testCounter+=1;
                         next = "tilt-angle.html";
                         if(testCounter == 20){
                             isFinished = true;
@@ -176,7 +207,6 @@
                         break;
                     case 2:
                         updateProgress("angleProgress")
-                        testCounter+=1;
                         next = "volume.html";
                         if(testCounter == 20){
                             isFinished = true;
@@ -199,23 +229,6 @@
                 }
                 document.getElementById("visDiv").innerHTML = "<object type='text/html' id='object-design' data ='" + next + "'></object>";
                 isFinished = false;
-                console.log(sessionStorage.getItem("actualAnswerBar"))
-                console.log(counter)
-                
-                if (counter == 0) {
-                    actualAnswersBar.push(sessionStorage.getItem("actualAnswerBar"))
-                }
-                if (counter == 1) {
-                    actualAnswersAngle.push(sessionStorage.getItem("actualAnswerAngle"))
-                }
-                if (counter == 2) {
-                    actualAnswersVolume.push(sessionStorage.getItem("actualAnswerVolume")) 
-                //console.log(sessionStorage.getItem("actualAnswerVolume"))
-                }
-                //console.log("actual answers from html: " + actualAnswers)
-                console.log(actualAnswersBar)
-                console.log(actualAnswersAngle)
-                console.log(actualAnswersVolume)
         }
 
         function parseData() {
