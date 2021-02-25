@@ -27,7 +27,7 @@ We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We had ab
 
 ## Bar Chart
 
-screenshot here
+![ScreenShot]()
 
 ## Angle
 
@@ -54,7 +54,6 @@ Here is the result percent of errors between each chart:
 
 
 
-
 # 95% Confidence Interval
 
 (insert screenshot of this here)
@@ -78,6 +77,18 @@ Here is the result percent of errors between each chart:
 when the button is hovered, that color changes to green.
 
 - Font combination. We used the 'Roboto' font, imported from the Google fonts API.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
