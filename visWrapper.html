@@ -248,15 +248,15 @@
                 barchartData.push([actualAnswersBar[i], userAnswers[i]]);
             }
             for  (let i = 0; i < 20; i++) {
-                for(let j = 20; j < 40; j++){
-                    angleData.push([actualAnswersAngle[i], userAnswers[j]]);
-                }
+                j = 20;
+                angleData.push([actualAnswersAngle[i], userAnswers[j]]);
+                j++
             
             }
             for (let i = 0 ; i < 20 ; i++ ) {
-                for(let j = 40; j < 60; j++){
-                    volumeData.push([actualAnswersVolume[i], userAnswers[j]]);
-                 }
+                j = 40;
+                volumeData.push([actualAnswersVolume[i], userAnswers[j]]);
+                j++
             }
 
             // console.log(volumeData)
