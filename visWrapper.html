@@ -247,16 +247,16 @@
             for (let i = 0 ; i < 20 ; i++) {
                 barchartData.push([actualAnswersBar[i], userAnswers[i]]);
             }
+            let j = 20;
             for  (let i = 0; i < 20; i++) {
-                j = 20;
                 angleData.push([actualAnswersAngle[i], userAnswers[j]]);
                 j++
             
             }
+            let k = 40;
             for (let i = 0 ; i < 20 ; i++ ) {
-                j = 40;
-                volumeData.push([actualAnswersVolume[i], userAnswers[j]]);
-                j++
+                volumeData.push([actualAnswersVolume[i], userAnswers[k]]);
+                k++
             }
 
             // console.log(volumeData)
