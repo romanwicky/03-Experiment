@@ -67,15 +67,7 @@ We used JavaScript to read the CSV file, and organize the data and calculate the
 
 We used Log-base-2 like the Cleveland and McGill paper to calculate the error percent.
 We also did not use the Log-Base-2 because our answers have different ranges.
-Below are the two different charts
 
-Here is the result percent of errors between each chart:
-
-(insert log percent error screenshot)
-(insert no log percent error screenshot)
-
-
-Conclusions:
 The human brain is better at guesssing vertical barcharts, than horizontal. The human brain also really struggles to guess angles that are not vertical, horizontal, or diagonal. Finally, the human brain is terrible at guessing volumetric differences, shown in the huge error scale for that test.
 
 # 95% Confidence Interval
