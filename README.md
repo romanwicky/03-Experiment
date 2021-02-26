@@ -1,7 +1,102 @@
+# Assignment 3 - Replicating a Classic Experiment 
+
+Danya Baron, Roman Wicky, Molly Wirtz
+
 https://romanwicky.github.io/03-Experiment/index.html
 
 
-Assignment 3 - Replicating a Classic Experiment  
+# Background
+
+In this assignment we implemented a controlled experiment using bar chart visualizations, angles, and volume visualizations. This experiment is based on
+the paper by Cleveland and McGill, where they tested pie and stack chart variants. We replicated this experiment, but instead of just using stack charts,
+we also used angles, and volume. 
+
+## Goal 
+
+1) Test 3 different visualizations, and run experiment with 10 participants.
+2) Implement data generation and error calculation functions by Cleveland and McGill's paper.
+3) Basic Analysis and Reporting of Results
+
+# Experiment
+
+We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We had about 20 randomly generated bar charts, volume SVG's, and angles in the experiment. These screenshots are from our home page, one screenshot per visualization, and our end visualization. Our hypotheses included to see if the user could determine how much a cube could fit into a bigger cube, guessing the angles of a tilt, and how much a smaller bar chart could fit into a larger bar chart.
+
+## Homepage 
+
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/homepage.png)
+
+## Bar Chart
+
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/barchart1.png)
+
+## Angle
+
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/angle1.png)
+
+## Volume
+
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/volume1.png)
+
+## Finish Page
+
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/finished%20page.png)
+
+
+# Analysis
+
+We used JavaScript to read the CSV file, and organize the data and calculate the percent error.
+
+We used Log-base-2 like the Cleveland and McGill paper to calculate the error percent.
+
+Here is the result percent of errors between each chart:
+
+(insert log percent error screenshot)
+
+
+# 95% Confidence Interval
+
+(insert screenshot of this here)
+
+
+# Technical Achievements
+
+- Sent data from the trials into an email, where we stored all of the CSV files from each trial.
+
+- We precalculated the error scores for each vis to speed up the calculation of the stat_summary in ggplot 2 with R. 
+
+- Experimented with more d3.js, including using a volume visualization which was not yet taught in class.
+
+- Used PapaParse library, which allows for seamless CSV parsing.
+
+
+
+# Design Achievements
+
+- Button interaction. When hovered, both buttons raise and change color to promote interactivity within the website.
+
+- Progress Bar. We created a progress bar at the top of the page, to indicate when a user was finished with a certain visualization such as the bar charts. When the user is finished with the bar chart, the barchart circle turns to our color scheme cornflower blue. There are circles turn green when the user finishes the whole experiment.
+
+- Basic color scheme. We used a color scheme to keep things simple and easy for the user to read. Our main color on the progress chart was cornflower blue, and
+when the button is hovered, that color changes to green.
+
+- Font combination. We used the 'Roboto' font, imported from the Google fonts API.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ===
 
 For the scope of this project, assume the role of a scientist who runs experiments for a living.
@@ -97,3 +192,18 @@ GitHub Details
 ```
 a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
 ```
+
+Design Achievements: 
+- Button interaction
+- Basic color scheme (write it up so it sounds legit)
+- Font combos (again make it legit)
+
+- progress bar (design or tech?)
+
+Tech Achievements: 
+- form validation
+
+Resources
+http://bl.ocks.org/mosley812/43194ec6f540c05e48273d0cd8877d2c
+https://d19jftygre6gh0.cloudfront.net/Niekes/613d43d39372f99ae2dcea14f0f90617
+https://github.com/Niekes/d3-3d/blob/master/src/primitiveShapes/cube.js
