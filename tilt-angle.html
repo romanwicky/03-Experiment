@@ -57,7 +57,37 @@
     .call(d3.axisLeft(y).tickFormat("").tickSize(0))
     .style("stroke-width", "1.5px")
 
-    let counter = 0;
+
+    svg.append("text")
+      .text("90")
+        // .attr("dy", "2em")
+      .attr("x", 225)
+      .attr("y", 5)
+      .attr("font-family", '"Roboto", sans-serif')
+
+    svg.append("text")
+      .text("180")
+        // .attr("dy", "2em")
+      .attr("x", 5)
+      .attr("y", 225)
+      .attr("font-family", '"Roboto", sans-serif')
+
+    svg.append("text")
+      .text("270")
+        // .attr("dy", "2em")
+      .attr("x", 225)
+      .attr("y", 450)
+      .attr("font-family", '"Roboto", sans-serif')
+
+      svg.append("text")
+      .text("0")
+        // .attr("dy", "2em")
+      .attr("x", 442)
+      .attr("y", 225)
+      .attr("font-family", '"Roboto", sans-serif')
+    
+    
+      let counter = 0;
     
     dummyData.forEach(data => {
       // Create G elt to contain line + text
@@ -74,10 +104,12 @@
           .y(function(d) { return d[1] })
         )
         .attr("transform", function(d) {
+
           let test = dummyData[0].angle
           //rotates in the clockwise direction, add a - to make rotate in the other direction
           return "rotate(" + -test + " 225 225)" 
         })
+        
 
       counter++
     })
