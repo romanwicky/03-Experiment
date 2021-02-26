@@ -21,6 +21,14 @@ we also used angles, and volume.
 
 We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We had about 20 randomly generated bar charts, volume SVG's, and angles in the experiment. These screenshots are from our home page, one screenshot per visualization, and our end visualization. Our hypotheses included to see if the user could determine how much a cube could fit into a bigger cube, guessing the angles of a tilt, and how much a smaller bar chart could fit into a larger bar chart.
 
+For the barchart, we wanted to use a difference reference frame, instead of testing "What percentage of the left is in the right", we wanted to test how many times the smaller barchart can fit in the larger. This changes the range from (.1-10) instead of 1-99%.
+
+For the angles, we wanted to test how well the human brain can percieve angles that are not horizontal, vertical, or diagonal. We had the users guess from 0-360 degree rotation.
+
+The the volume, we wanted to test how well the human brain can guess volumetric differences, so we asked the user to guess how many times a 1x1x1 cube can fit in a much larger cube.
+
+
+
 ## Homepage 
 
 ![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/homepage.png)
@@ -47,15 +55,22 @@ We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We had ab
 We used JavaScript to read the CSV file, and organize the data and calculate the percent error.
 
 We used Log-base-2 like the Cleveland and McGill paper to calculate the error percent.
+We also did not use the Log-Base-2 because our answers have different ranges.
+Below are the two different charts
 
 Here is the result percent of errors between each chart:
 
 (insert log percent error screenshot)
+(insert no log percent error screenshot)
 
+
+Conclusions:
+The human brain is better at guesssing vertical barcharts, than horizontal. The human brain also really struggles to guess angles that are not vertical, horizontal, or diagonal. Finally, the human brain is terrible at guessing volumetric differences, shown in the huge error scale for that test.
 
 # 95% Confidence Interval
 
 (insert screenshot of this here)
+(screenshot of non log)
 
 
 # Technical Achievements
