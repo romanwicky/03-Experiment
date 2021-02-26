@@ -21,7 +21,7 @@
                 <label for="input-text" class="answerTxt"> Answer: </label>
                 <input type="text" id="input-text" oninput="enableBtn()">
                 <!-- UNCOMMENT AFTER TESTING IS DONE -->
-                <input type="button" id="submit-button" value="Next" enabled/>
+                <input type="button" id="submit-button" value="Next"  />
             </form>
            
         </div>
@@ -113,24 +113,52 @@
         var counter = 0;
         var testCounter = 0;
         var isFinished = false;
-        sessionStorage.setItem("vertical", "true")
         let userAnswers = []
-        let actualAnswers = []
+        let actualAnswersBar = []
+        let actualAnswersAngle = []
         let actualAnswersVolume = []
+        let firstStart = true;
+        let storeDataCounter = 0
+        let currentChart = 'barchart.html'
+
+        if(firstStart){
+            sessionStorage.clear()
+            firstStart = false;
+        }
+
+        sessionStorage.setItem("vertical", "true")
 
         if(testCounter == 0){
             switchChart();
         }
 
         // function enableBtn() {
-        //      if (document.getElementById("input-text").value != "") {
-        //          document.getElementById("submit-button").disabled = false
-        //      } else {
-        //          document.getElementById("submit-button").disabled = true
-        //      }
+        //       if (document.getElementById("input-text").value != "") {
+        //           document.getElementById("submit-button").disabled = false
+        //       } else {
+        //           document.getElementById("submit-button").disabled = true
+        //       }
         // }
 
+        function storeData () {
+            if (currentChart == 'barchart.html') {
+                console.log("Stored bar")
+                actualAnswersBar.push(sessionStorage.getItem("actualAnswerBar"))
+            }
+            if (currentChart == 'tilt-angle.html'){
+                console.log("Stored angle")
+                actualAnswersAngle.push(sessionStorage.getItem("actualAnswerAngle"))
+            }
+            if (currentChart == 'volume.html') {
+                console.log("Stored vol")
+                actualAnswersVolume.push(sessionStorage.getItem("actualAnswerVolume")) 
+            //console.log(sessionStorage.getItem("actualAnswerVolume"))
+            }
+        }
+
         function nextButton(){
+            testCounter+=1;
+            storeDataCounter = counter - 1
             // Get + clear input
             let input = document.getElementById("input-text").value;
         
@@ -145,16 +173,27 @@
                 }
             }
             // UNCOMMENT AFTER TESTING IS DONE
-            //document.getElementById("submit-button").disabled = true
-            
+            // document.getElementById("submit-button").disabled = true
+
+            //console.log(sessionStorage.getItem("actualAnswerBar"))
+            //console.log(counter)
+            storeData()
+
             switchChart()
+            console.log("Counter: " + counter)
+            console.log("Test Counter: " + testCounter)
+
+            //console.log("actual answers from html: " + actualAnswers)
+            //console.log("Test " + actualAnswersBar)
+            //console.log(actualAnswersAngle)
+            //console.log(actualAnswersVolume)
+            
         }
 
         function switchChart() {
                 //console.log(testCounter);
                 switch (counter) {
                     case 0:
-                        testCounter+=1;
                         next = "barchart.html";
                         if(testCounter == 20){
                             isFinished = true;
@@ -164,7 +203,6 @@
                         break;
                     case 1:
                         updateProgress("barProgress")
-                        testCounter+=1;
                         next = "tilt-angle.html";
                         if(testCounter == 20){
                             isFinished = true;
@@ -175,7 +213,6 @@
                         break;
                     case 2:
                         updateProgress("angleProgress")
-                        testCounter+=1;
                         next = "volume.html";
                         if(testCounter == 20){
                             isFinished = true;
@@ -197,16 +234,8 @@
                         break;
                 }
                 document.getElementById("visDiv").innerHTML = "<object type='text/html' id='object-design' data ='" + next + "'></object>";
+                currentChart = next
                 isFinished = false;
-                // console.log(sessionStorage.getItem("actualAnswer"))
-                
-                if (counter == 2) {
-                actualAnswersVolume.push(sessionStorage.getItem("actualAnswerVolume")) 
-                //console.log(sessionStorage.getItem("actualAnswerVolume"))
-                } else {
-                    actualAnswers.push(sessionStorage.getItem("actualAnswer"))
-                }
-                //console.log("actual answers from html: " + actualAnswers)
         }
 
         function parseData() {
@@ -215,16 +244,14 @@
             let volumeData = [];
 
             for (let i = 0 ; i < 20 ; i++) {
-
-                    barchartData.push([actualAnswers[i], userAnswers[i]]);
-                }
+                barchartData.push([actualAnswersBar[i], userAnswers[i]]);
+            }
             for  (let i = 0; i < 20; i++) {
-                    //console.log("actual angle answer " + actualAnswers[i])
-                    angleData.push([actualAnswers[i], userAnswers[i]]);
-                }
+                angleData.push([actualAnswersAngle[i], userAnswers[i]]);
+            }
             for (let i = 0 ; i < 20 ; i++ ) {
                 volumeData.push([actualAnswersVolume[i], userAnswers[i]]);
-                }
+            }
 
             // console.log(volumeData)
             //console.log("barchart" + barchartData)

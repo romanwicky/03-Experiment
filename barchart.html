@@ -55,10 +55,13 @@
 
       let biggerChart = (Math.max(a1, d1))
       let smallerChart = (Math.min(a1, d1))
+      
       //console.log(biggerChart, smallerChart)
+      let ratio = biggerChart / smallerChart
+      //console.log(ratio)
       
 
-      sessionStorage.setItem("actualAnswer", biggerChart / smallerChart)
+      sessionStorage.setItem("actualAnswerBar", ratio)
 
       // Create grid
       svg.append("rect")
@@ -124,10 +127,11 @@
 
       let biggerChart = (Math.max(a1, d1))
       let smallerChart = (Math.min(a1, d1))
+      let ratio = biggerChart / smallerChart
      // console.log(biggerChart, smallerChart)
       
 
-      sessionStorage.setItem("actualAnswer", biggerChart / smallerChart)
+      sessionStorage.setItem("actualAnswerBar", ratio)
 
       // Create grid
       svg.append("rect")
