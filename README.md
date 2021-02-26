@@ -31,7 +31,7 @@ We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We had ab
 
 ## Angle
 
-![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/angle1.png)
+<!-- ![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/angle1.png) -->
 
 ## Volume
 
