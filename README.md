@@ -31,6 +31,14 @@ The human perceptual system judges differences in volume very poorly.
 
 We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We randomly generated 20 trials each of bar charts (10 vertical, 10 horizontal), volume SVG's, and angles in the experiment. The below screenshots are from our home page, one screenshot per visualization, and our exit page. As you can see, the barcharts have six bars, each of random height, with two of the bars 'selected' by a dot placed below the axis instead of within the bars, as not to give any point of reference to the user. Users must guess how many of the smaller cube would fit into the larger. The angle chart displays a single line, of which the users must guess the angle. Here, the four right angles of the quadrants are labeled as to not confuse the user, but we do not generate 0, 45, 90, 135, 180, 225, 270, 315, and 360 degree angles to test our hypothesis. The volume chart displays two three dimensional cubes, the left-most which is always a 1x1x1 cube. Again, users must guess how many of the smaller cube would fit into the larger. 
 
+For the barchart, we wanted to use a difference reference frame, instead of testing "What percentage of the left is in the right", we wanted to test how many times the smaller barchart can fit in the larger. This changes the range from (.1-10) instead of 1-99%.
+
+For the angles, we wanted to test how well the human brain can percieve angles that are not horizontal, vertical, or diagonal. We had the users guess from 0-360 degree rotation.
+
+The the volume, we wanted to test how well the human brain can guess volumetric differences, so we asked the user to guess how many times a 1x1x1 cube can fit in a much larger cube.
+
+
+
 ## Homepage 
 
 ![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/homepage.png)
@@ -42,7 +50,7 @@ We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We random
 
 ## Angle
 
-![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/angle1.png)
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/main/img/angle-ss.png)
 
 ## Volume
 
@@ -58,15 +66,22 @@ We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We random
 We used JavaScript to read the CSV file, and organize the data and calculate the percent error.
 
 We used Log-base-2 like the Cleveland and McGill paper to calculate the error percent.
+We also did not use the Log-Base-2 because our answers have different ranges.
+Below are the two different charts
 
 Here is the result percent of errors between each chart:
 
 (insert log percent error screenshot)
+(insert no log percent error screenshot)
 
+
+Conclusions:
+The human brain is better at guesssing vertical barcharts, than horizontal. The human brain also really struggles to guess angles that are not vertical, horizontal, or diagonal. Finally, the human brain is terrible at guessing volumetric differences, shown in the huge error scale for that test.
 
 # 95% Confidence Interval
 
 (insert screenshot of this here)
+(screenshot of non log)
 
 
 # Technical Achievements
@@ -80,6 +95,9 @@ Here is the result percent of errors between each chart:
 - Used PapaParse library, which allows for seamless CSV parsing.
 
 - Used basic form validation so that users could not click through the experiment without entering any data. 
+
+- Used SessionStorage to store global variables in between html files. GitHub pages cannot work with servers, so that was our workaround.
+
 
 
 
@@ -210,5 +228,3 @@ GitHub Details
 ```
 a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
 ```
-
-

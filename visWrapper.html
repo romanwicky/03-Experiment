@@ -21,7 +21,7 @@
                 <label for="input-text" class="answerTxt"> Answer: </label>
                 <input type="text" id="input-text" oninput="enableBtn()">
                 <!-- UNCOMMENT AFTER TESTING IS DONE -->
-                <input type="submit" id="submit-button" value="Next" disabled />
+                <input type="button" id="submit-button" value="Next" disabled />
             </form>
            
         </div>
@@ -156,7 +156,6 @@
             }
         }
 
-
         function nextButton(){
             testCounter+=1;
             storeDataCounter = counter - 1
@@ -164,6 +163,7 @@
             let input = document.getElementById("input-text").value;
         
             userAnswers.push(input)
+            console.log(input)
             let resetText = document.getElementById("input-text");
             resetText.value = ""
 
@@ -181,8 +181,8 @@
             storeData()
 
             switchChart()
-            console.log("Counter: " + counter)
-            console.log("Test Counter: " + testCounter)
+            //console.log("Counter: " + counter)
+            //console.log("Test Counter: " + testCounter)
 
             //console.log("actual answers from html: " + actualAnswers)
             //console.log("Test " + actualAnswersBar)
@@ -247,11 +247,16 @@
             for (let i = 0 ; i < 20 ; i++) {
                 barchartData.push([actualAnswersBar[i], userAnswers[i]]);
             }
+            let j = 21;
             for  (let i = 0; i < 20; i++) {
-                angleData.push([actualAnswersAngle[i], userAnswers[i]]);
+                angleData.push([actualAnswersAngle[i], userAnswers[j]]);
+                j++
+            
             }
+            let k = 41;
             for (let i = 0 ; i < 20 ; i++ ) {
-                volumeData.push([actualAnswersVolume[i], userAnswers[i]]);
+                volumeData.push([actualAnswersVolume[i], userAnswers[k]]);
+                k++
             }
 
             // console.log(volumeData)
