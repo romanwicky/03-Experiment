@@ -13,7 +13,7 @@ we also used angles and volume.
 
 ## Goal 
 
-1) Test 3 different visualizations, and run experiment with 10 participants.
+1) Test three different visualizations, and run experiment with 10 participants.
 2) Implement data generation and error calculation functions by Cleveland and McGill's paper.
 3) Basic analysis and reporting of results
 
@@ -25,17 +25,17 @@ The human perceptive system can better understand vertically stacked bar-charts 
 The human perceptive system can accurately guess vertical, horizontal, and diagonal lines, but struggle to accurately guess other angles. 
 
 <b>3D Volume:</b>
-The human perceptual system judges differences in volume very poorly.
+The human perceptual system judges differences in volume very poorly in comparison to barcharts and angles.
 
 # Experiment
 
-We used D3.js, JavaScript, HTML/CSS functionality for this experiment. We randomly generated 20 trials each of bar charts (10 vertical, 10 horizontal), volume SVG's, and angles in the experiment. The below screenshots are from our home page, one screenshot per visualization, and our exit page. As you can see, the barcharts have six bars, each of random height, with two of the bars 'selected' by a dot placed below the axis instead of within the bars, as not to give any point of reference to the user. Users must guess how many of the smaller cube would fit into the larger. The angle chart displays a single line, of which the users must guess the angle. Here, the four right angles of the quadrants are labeled as to not confuse the user, but we do not generate 0, 45, 90, 135, 180, 225, 270, 315, and 360 degree angles to test our hypothesis. The volume chart displays two three dimensional cubes, the left-most which is always a 1x1x1 cube. Again, users must guess how many of the smaller cube would fit into the larger. 
+We used D3.js, JavaScript, and HTML/CSS functionality for this experiment. We randomly generated 20 trials each of bar charts (10 vertical, 10 horizontal), volume SVG's, and angles in the experiment. The screenshots included below show our home page, each of our visualizations, and our exit page. 
 
-For the barchart, we wanted to use a difference reference frame, instead of testing "What percentage of the left is in the right", we wanted to test how many times the smaller barchart can fit in the larger. This changes the range from (.1-10) instead of 1-99%.
+As you can see, the barchart visualizations have six bars, each of randomly generated height, with two of the bars 'selected' by a dot. We made the decision to place these dots below the axis instead of within the bars, as not to give any point of reference to the user. For the barchart, we wanted to use a difference reference frame, instead of testing "What percentage of the left is in the right", we wanted to test how many times the smaller barchart can fit in the larger. This changes the range from (.1-10) instead of 1-99%.
 
-For the angles, we wanted to test how well the human brain can percieve angles that are not horizontal, vertical, or diagonal. We had the users guess from 0-360 degree rotation.
+The angle chart displays a single line, of which the users must guess the angle. Here, the four right angles of the quadrants are labeled as to not confuse the user. We do not generate 0, 45, 90, 135, 180, 225, 270, 315, and 360 degree angles, so that we could test how well the human brain can percieve angles that are not horizontal, vertical, or diagonal. We had the users guess from 0-360 degree rotation.
 
-The the volume, we wanted to test how well the human brain can guess volumetric differences, so we asked the user to guess how many times a 1x1x1 cube can fit in a much larger cube.
+The volume chart displays two three-dimensional cubes where the left-most is always a 1x1x1 cube, and the right-most cube ranges in sizes from 2x2x2 to 7x7x7. We wanted to test how well the human brain can guess volumetric differences, so we asked the user to guess how many times the 1x1x1 cube can fit in a much larger cube.
 
 
 
@@ -46,7 +46,7 @@ The the volume, we wanted to test how well the human brain can guess volumetric 
 ## Bar Chart
 
 ![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/barchart1.png)
-![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/barchart2.png)
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/main/img/barchart2.png)
 
 ## Angle
 
@@ -67,7 +67,15 @@ We used JavaScript to read the CSV file, and organize the data and calculate the
 
 We used Log-base-2 like the Cleveland and McGill paper to calculate the error percent.
 We also did not use the Log-Base-2 because our answers have different ranges.
+Below are the two different charts
 
+Here is the result percent of errors between each chart:
+
+(insert log percent error screenshot)
+(insert no log percent error screenshot)
+
+
+Conclusions:
 The human brain is better at guesssing vertical barcharts, than horizontal. The human brain also really struggles to guess angles that are not vertical, horizontal, or diagonal. Finally, the human brain is terrible at guessing volumetric differences, shown in the huge error scale for that test.
 
 # 95% Confidence Interval
@@ -101,7 +109,7 @@ The human brain is better at guesssing vertical barcharts, than horizontal. The 
 
 - Basic color scheme. We used a basic color scheme to keep things simple and easy for the user to read. The header is a dark blue, while all buttons and the circles on the progress bar start as a light blue, and change to green on hover or task completion, respectively. Our created scheme is pictured below. 
 
-![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/roman-work/img/scheme.png)
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/main/img/scheme.png)
 
 - Font combination. We primarily used the 'Roboto' font, imported from the Google fonts API, accompanied by the 'Lato' font for buttons and headers. According to "Choosing Fonts for Your Data Visualization" [1], these fonts are good for data visualizations as they are highly readable and aesthetically pleasing. 
 
