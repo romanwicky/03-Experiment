@@ -21,7 +21,7 @@
                 <label for="input-text" class="answerTxt"> Answer: </label>
                 <input type="text" id="input-text" oninput="enableBtn()">
                 <!-- UNCOMMENT AFTER TESTING IS DONE -->
-                <input type="button" id="submit-button" value="Next"  />
+                <input type="button" id="submit-button" value="Next" disabled />
             </form>
            
         </div>
@@ -132,13 +132,13 @@
             switchChart();
         }
 
-        // function enableBtn() {
-        //       if (document.getElementById("input-text").value != "") {
-        //           document.getElementById("submit-button").disabled = false
-        //       } else {
-        //           document.getElementById("submit-button").disabled = true
-        //       }
-        // }
+         function enableBtn() {
+               if (document.getElementById("input-text").value != "") {
+                   document.getElementById("submit-button").disabled = false
+              } else {
+                   document.getElementById("submit-button").disabled = true
+               }
+         }
 
         function storeData () {
             if (currentChart == 'barchart.html') {
@@ -173,7 +173,7 @@
                 }
             }
             // UNCOMMENT AFTER TESTING IS DONE
-            // document.getElementById("submit-button").disabled = true
+            document.getElementById("submit-button").disabled = true
 
             //console.log(sessionStorage.getItem("actualAnswerBar"))
             //console.log(counter)

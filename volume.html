@@ -9,7 +9,7 @@
     <svg id="vis"></svg>
     <div class="qTxt">
       <p>This test is to see how the human brain distinguishes and understands the difference in volume between a small cube and a large cube.</p>
-      <p>How many small cubes can fit in the larger cube?</p>
+      <p>How many small cubes can fit in the larger cube? The smaller cube is a 1x1x1 cube.</p>
     </div>
   </body>
 
@@ -95,7 +95,7 @@
 
       function generateSize(){
 
-        let value = Math.round(Math.random() * (13 - 3) + 3)
+        let value = Math.round(Math.random() * (8 - 3) + 3)
         if(value === previousSize){
           value+=1
         }
