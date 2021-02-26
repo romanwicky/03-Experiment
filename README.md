@@ -62,6 +62,8 @@ Here is the result percent of errors between each chart:
 
 - Sent data from the trials into an email, where we stored all of the CSV files from each trial.
 
+- We precalculated the error scores for each vis to speed up the calculation of the stat_summary in ggplot 2 with R. 
+
 - Experimented with more d3.js, including using a volume visualization which was not yet taught in class.
 
 - Used PapaParse library, which allows for seamless CSV parsing.
