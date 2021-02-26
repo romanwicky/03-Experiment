@@ -68,6 +68,8 @@ Here is the result percent of errors between each chart:
 
 - Used PapaParse library, which allows for seamless CSV parsing.
 
+- Used SessionStorage to store global variables in between html files. GitHub pages cannot work with servers, so that was our workaround.
+
 
 
 # Design Achievements
