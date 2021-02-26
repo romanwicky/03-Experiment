@@ -67,12 +67,6 @@ We used JavaScript to read the CSV file, and organize the data and calculate the
 
 We used Log-base-2 like the Cleveland and McGill paper to calculate the error percent.
 We also did not use the Log-Base-2 because our answers have different ranges.
-Below are the two different charts
-
-Here is the result percent of errors between each chart:
-
-(insert log percent error screenshot)
-(insert no log percent error screenshot)
 
 
 Conclusions:
