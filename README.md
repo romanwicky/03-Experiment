@@ -84,13 +84,13 @@ Non-log base error:
 
 # Technical Achievements
 
-- Sent data from the trials into an email, where we stored all of the CSV files from each trial.
+- Sent data from the trials into an email, where we stored all of the CSV files from each trial. 
 
 - We precalculated the error scores for each vis to speed up the calculation of the stat_summary in ggplot 2 with R. 
 
 - Experimented with d3.js, including using a volume visualization which had not yet taught in class.
 
-- Used PapaParse library, which allows for seamless CSV parsing.
+- Used PapaParse, a JavaScript library, which allows for seamless CSV parsing.
 
 - Used basic form validation so that users could not click through the experiment without entering any data. 
 
