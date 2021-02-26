@@ -6,8 +6,12 @@ library(tidyr)
 df <- read.csv('errorcalc.csv')
 
 
-d <- ggplot(df(truePercent, reportedPercent)) + geom_point()
+# ggplot(aes(vis, log(abs(guess-truepercent), 2) ) ) + geom.point()
 
-# d + stat_summary(fun.data="", colour="", size=2)
+d <- ggplot(df(vis, guess)) + geom_point()
+
+# d + stat_summary(fun.data="mean_cl_boot", colour=red"", size=2)
+
+d + coord_flip()
 
 
