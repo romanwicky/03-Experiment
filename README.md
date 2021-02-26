@@ -74,8 +74,12 @@ The human brain is better at guesssing vertical barcharts, than horizontal. The 
 
 # 95% Confidence Interval
 
-(insert screenshot of this here)
-(screenshot of non log)
+Log-base error:
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/main/img/log-result.png)
+
+
+Non-log base error:
+![ScreenShot](https://github.com/romanwicky/03-Experiment/blob/main/img/non-log%20error.png)
 
 
 # Technical Achievements
