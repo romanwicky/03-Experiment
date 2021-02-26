@@ -32,10 +32,10 @@
     dummyData = [{label: 'a', angle: randomAngles()}] 
 
     sessionStorage.setItem("actualAnswerAngle", dummyData[0].angle)
-    console.log(dummyData[0].angle)
+    console.log("Random Angle: " + dummyData[0].angle)
 
     // Static data to generate and position lines
-    dummyLine = [ [225, 225], [225, 400]  ]
+    dummyLine = [[225, 225], [400, 225]]
   
 
     // Create grid
@@ -74,7 +74,8 @@
           .y(function(d) { return d[1] })
         )
         .attr("transform", function(d) {
-          return "rotate(" + data.angle + " 225 225)" 
+          let test = dummyData[0].angle
+          return "rotate(" + -test + " 225 225)" 
         })
 
       counter++
