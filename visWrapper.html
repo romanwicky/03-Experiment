@@ -142,19 +142,20 @@
 
         function storeData () {
             if (currentChart == 'barchart.html') {
-                console.log("Stored bar")
+                console.log("Stored bar " +  sessionStorage.getItem("actualAnswerBar"))
                 actualAnswersBar.push(sessionStorage.getItem("actualAnswerBar"))
             }
             if (currentChart == 'tilt-angle.html'){
-                console.log("Stored angle")
+                console.log("Stored angle " + sessionStorage.getItem("actualAnswerAngle"))
                 actualAnswersAngle.push(sessionStorage.getItem("actualAnswerAngle"))
             }
             if (currentChart == 'volume.html') {
-                console.log("Stored vol")
+                console.log("Stored vol " + sessionStorage.getItem("actualAnswerVolume"))
                 actualAnswersVolume.push(sessionStorage.getItem("actualAnswerVolume")) 
             //console.log(sessionStorage.getItem("actualAnswerVolume"))
             }
         }
+
 
         function nextButton(){
             testCounter+=1;
