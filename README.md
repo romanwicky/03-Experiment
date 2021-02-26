@@ -110,10 +110,10 @@ The human brain is better at guesssing vertical barcharts, than horizontal. The 
 
 
 # Resources
-[1] https://medium.com/nightingale/choosing-a-font-for-your-data-visualization-2ed37afea637
-[2] http://bl.ocks.org/mosley812/43194ec6f540c05e48273d0cd8877d2c
-[3] https://d19jftygre6gh0.cloudfront.net/Niekes/613d43d39372f99ae2dcea14f0f90617
-[4] https://github.com/Niekes/d3-3d/blob/master/src/primitiveShapes/cube.js
+[1] https://medium.com/nightingale/choosing-a-font-for-your-data-visualization-2ed37afea637<br/>
+[2] http://bl.ocks.org/mosley812/43194ec6f540c05e48273d0cd8877d2c<br/>
+[3] https://d19jftygre6gh0.cloudfront.net/Niekes/613d43d39372f99ae2dcea14f0f90617<br/>
+[4] https://github.com/Niekes/d3-3d/blob/master/src/primitiveShapes/cube.js<br/>
 
 
 
