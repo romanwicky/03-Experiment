@@ -64,7 +64,7 @@ Here is the result percent of errors between each chart:
 
 - Experimented with more d3.js, including using a volume visualization which was not yet taught in class.
 
-- 
+- Used PapaParse library, which allows for seamless CSV parsing.
 
 
 
